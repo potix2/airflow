@@ -615,7 +615,7 @@ def upgradedb():
 
 
 def resetdb():
-    """Clear out the database"""
+    """Clear out the database."""
     log.info("Dropping tables that exist")
 
     connection = settings.engine.connect()

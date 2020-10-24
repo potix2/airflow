@@ -19,7 +19,7 @@ from airflow.utils.docs import get_docs_url
 
 
 def init_appbuilder_links(app):
-    """Add links to Docs menu in navbar"""
+    """Add links to Docs menu in navbar."""
     appbuilder = app.appbuilder
     appbuilder.add_link("Documentation", href=get_docs_url(), category="Docs")
     appbuilder.add_link("Airflow Website", href='https://airflow.apache.org', category="Docs")

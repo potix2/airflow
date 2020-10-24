@@ -27,11 +27,10 @@ from airflow.utils.decorators import apply_defaults
 
 class DatadogSensor(BaseSensorOperator):
     """
-    A sensor to listen, with a filter, to datadog event streams and determine
-    if some event was emitted.
+    A sensor to listen, with a filter, to datadog event streams and determine if some event was emitted.
 
-    Depends on the datadog API, which has to be deployed on the same server where
-    Airflow runs.
+    Depends on the datadog API, which has to be deployed on the same server where Airflow runs.
+
 
     :param datadog_conn_id: The connection to datadog, containing metadata for api keys.
     :param datadog_conn_id: str

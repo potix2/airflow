@@ -14,7 +14,7 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""Handler that integrates with Stackdriver"""
+"""Handler that integrates with Stackdriver."""
 import logging
 from typing import Collection, Dict, List, Optional, Tuple, Type
 from urllib.parse import urlencode
@@ -102,7 +102,7 @@ class StackdriverTaskHandler(logging.Handler):
 
     @cached_property
     def _client(self) -> gcp_logging.Client:
-        """Google Cloud Library API client"""
+        """Google Cloud Library API client."""
         credentials, project = get_credentials_and_project_id(
             key_path=self.gcp_key_path, scopes=self.scopes, disable_logging=True
         )
@@ -115,7 +115,7 @@ class StackdriverTaskHandler(logging.Handler):
 
     @cached_property
     def _transport(self) -> Transport:
-        """Object responsible for sending data to Stackdriver"""
+        """Object responsible for sending data to Stackdriver."""
         return self.transport_type(self._client, self.name)
 
     def emit(self, record: logging.LogRecord) -> None:
@@ -140,7 +140,7 @@ class StackdriverTaskHandler(logging.Handler):
 
     def set_context(self, task_instance: TaskInstance) -> None:
         """
-        Configures the logger to add information with information about the current task
+        Configures the logger to add information with information about the current task.
 
         :param task_instance: Currently executed task
         :type task_instance:  :class:`airflow.models.TaskInstance`

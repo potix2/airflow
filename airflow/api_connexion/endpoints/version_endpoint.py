@@ -26,14 +26,14 @@ log = logging.getLogger(__name__)
 
 
 class VersionInfo(NamedTuple):
-    """Version information"""
+    """Version information."""
 
     version: str
     git_version: Optional[str]
 
 
 def get_version():
-    """Get version information"""
+    """Get version information."""
     airflow_version = airflow.__version__
 
     git_version = get_airflow_git_version()

@@ -15,7 +15,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""Publish message to SQS queue"""
+"""Publish message to SQS queue."""
 from typing import Optional
 
 from airflow.models import BaseOperator
@@ -63,7 +63,7 @@ class SQSPublishOperator(BaseOperator):
 
     def execute(self, context):
         """
-        Publish the message to SQS queue
+        Publish the message to SQS queue.
 
         :param context: the context object
         :type context: dict

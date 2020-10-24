@@ -14,7 +14,7 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""Based on: https://github.com/sphinx-contrib/redirects"""
+"""Based on: https://github.com/sphinx-contrib/redirects."""
 import os
 
 from sphinx.builders import html as builders
@@ -72,6 +72,6 @@ def generate_redirects(app):
 
 
 def setup(app):
-    """Setup plugin"""
+    """Setup plugin."""
     app.add_config_value("redirects_file", "redirects", "env")
     app.connect("builder-inited", generate_redirects)

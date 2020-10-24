@@ -25,7 +25,7 @@ from airflow.hooks.base_hook import BaseHook
 
 
 class ZendeskHook(BaseHook):
-    """A hook to talk to Zendesk"""
+    """A hook to talk to Zendesk."""
 
     def __init__(self, zendesk_conn_id: str) -> None:
         super().__init__()
@@ -40,10 +40,7 @@ class ZendeskHook(BaseHook):
         )
 
     def __handle_rate_limit_exception(self, rate_limit_exception: ZendeskError) -> None:
-        """
-        Sleep for the time specified in the exception. If not specified, wait
-        for 60 seconds.
-        """
+        """Sleep for the time specified in the exception. If not specified, wait for 60 seconds."""
         retry_after = int(rate_limit_exception.response.headers.get('Retry-After', 60))
         self.log.info("Hit Zendesk API rate limit. Pausing for %s seconds", retry_after)
         time.sleep(retry_after)
@@ -56,7 +53,7 @@ class ZendeskHook(BaseHook):
         side_loading: bool = False,
     ) -> dict:
         """
-        Call Zendesk API and return results
+        Call Zendesk API and return results.
 
         :param path: The Zendesk API to call
         :param query: Query parameters

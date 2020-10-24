@@ -67,7 +67,7 @@ class RunState:
 
     @property
     def is_successful(self) -> bool:
-        """True if the result state is SUCCESS"""
+        """True if the result state is SUCCESS."""
         return self.result_state == 'SUCCESS'
 
     def __eq__(self, other: object) -> bool:
@@ -119,6 +119,8 @@ class DatabricksHook(BaseHook):  # noqa
     @staticmethod
     def _parse_host(host: str) -> str:
         """
+        Parse the host field.
+
         The purpose of this function is to be robust to improper connections
         settings provided by users, specifically in the host field.
 
@@ -145,7 +147,7 @@ class DatabricksHook(BaseHook):  # noqa
 
     def _do_api_call(self, endpoint_info, json):
         """
-        Utility function to perform an API call with retries
+        Utility function to perform an API call with retries.
 
         :param endpoint_info: Tuple of method and endpoint
         :type endpoint_info: tuple[string, string]
@@ -325,8 +327,9 @@ RUN_LIFE_CYCLE_STATES = ['PENDING', 'RUNNING', 'TERMINATING', 'TERMINATED', 'SKI
 
 class _TokenAuth(AuthBase):
     """
-    Helper class for requests Auth field. AuthBase requires you to implement the __call__
-    magic function.
+    Helper class for requests Auth field.
+
+    AuthBase requires you to implement the __call__ magic function.
     """
 
     def __init__(self, token: str) -> None:

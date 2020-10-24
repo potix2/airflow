@@ -16,7 +16,7 @@
 # under the License.
 
 
-"""kubernetes_resource_checkpointing
+"""kubernetes_resource_checkpointing.
 
 Revision ID: 33ae817a1ff4
 Revises: 947454bf1dff

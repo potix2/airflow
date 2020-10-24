@@ -109,7 +109,7 @@ class LocalFilesystemToGCSOperator(BaseOperator):
         self.impersonation_chain = impersonation_chain
 
     def execute(self, context):
-        """Uploads a file or list of files to Google Cloud Storage"""
+        """Uploads a file or list of files to Google Cloud Storage."""
         hook = GCSHook(
             google_cloud_storage_conn_id=self.gcp_conn_id,
             delegate_to=self.delegate_to,

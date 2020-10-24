@@ -27,7 +27,7 @@ from airflow.utils.log.logging_mixin import ExternalLoggingMixin
 
 
 class TaskLogReader:
-    """Task log reader"""
+    """Task log reader."""
 
     def read_log_chunks(
         self, ti: TaskInstance, try_number: Optional[int], metadata
@@ -61,7 +61,7 @@ class TaskLogReader:
 
     def read_log_stream(self, ti: TaskInstance, try_number: Optional[int], metadata: dict) -> Iterator[str]:
         """
-        Used to continuously read log to the end
+        Used to continuously read log to the end.
 
         :param ti: The Task Instance
         :type ti: TaskInstance
@@ -105,7 +105,7 @@ class TaskLogReader:
 
     def render_log_filename(self, ti: TaskInstance, try_number: Optional[int] = None):
         """
-        Renders the log attachment filename
+        Render the log attachment filename.
 
         :param ti: The task instance
         :type ti: TaskInstance

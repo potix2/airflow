@@ -163,7 +163,7 @@ class SerializedDagModel(Base):
 
     @property
     def dag(self):
-        """The DAG deserialized from the ``data`` column"""
+        """The DAG deserialized from the ``data`` column."""
         if isinstance(self.data, dict):
             dag = SerializedDAG.from_dict(self.data)  # type: Any
         else:
@@ -237,8 +237,9 @@ class SerializedDagModel(Base):
     @provide_session
     def bulk_sync_to_db(dags: List[DAG], session: Session = None):
         """
-        Saves DAGs as Serialized DAG objects in the database. Each
-        DAG is saved in a separate database query.
+        Save DAGs as Serialized DAG objects in the database.
+
+        Each DAG is saved in a separate database query.
 
         :param dags: the DAG objects to save to the DB
         :type dags: List[airflow.models.dag.DAG]
@@ -256,8 +257,7 @@ class SerializedDagModel(Base):
     @provide_session
     def get_last_updated_datetime(cls, dag_id: str, session: Session = None) -> datetime:
         """
-        Get the date when the Serialized DAG associated to DAG was last updated
-        in serialized_dag table
+        Get the date when the Serialized DAG associated to DAG was last updated in serialized_dag table.
 
         :param dag_id: DAG ID
         :type dag_id: str

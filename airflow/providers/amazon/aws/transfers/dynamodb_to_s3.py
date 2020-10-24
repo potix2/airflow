@@ -17,10 +17,8 @@
 # under the License.
 #
 
-"""
-This module contains operators to replicate records from
-DynamoDB table to S3.
-"""
+"""This module contains operators to replicate records from DynamoDB table to S3."""
+
 import json
 from copy import copy
 from os.path import getsize

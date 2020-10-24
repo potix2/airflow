@@ -26,9 +26,9 @@ from airflow.utils.log.logging_mixin import LoggingMixin
 
 class S3TaskHandler(FileTaskHandler, LoggingMixin):
     """
-    S3TaskHandler is a python log handler that handles and reads
-    task instance logs. It extends airflow FileTaskHandler and
-    uploads to and reads from S3 remote storage.
+    S3TaskHandler is a python log handler that handles and reads task instance logs.
+
+    It extends airflow FileTaskHandler and uploads to and reads from S3 remote storage.
     """
 
     def __init__(self, base_log_folder: str, s3_log_folder: str, filename_template: str):
@@ -121,7 +121,7 @@ class S3TaskHandler(FileTaskHandler, LoggingMixin):
 
     def s3_log_exists(self, remote_log_location: str) -> bool:
         """
-        Check if remote_log_location exists in remote storage
+        Check if remote_log_location exists in remote storage.
 
         :param remote_log_location: log's location in remote storage
         :type remote_log_location: str
@@ -135,8 +135,9 @@ class S3TaskHandler(FileTaskHandler, LoggingMixin):
 
     def s3_read(self, remote_log_location: str, return_error: bool = False) -> str:
         """
-        Returns the log found at the remote_log_location. Returns '' if no
-        logs are found or there is an error.
+        Returns the log found at the remote_log_location.
+
+        Returns '' if no logs are found or there is an error.
 
         :param remote_log_location: the log's location in remote storage
         :type remote_log_location: str (path)
@@ -157,8 +158,7 @@ class S3TaskHandler(FileTaskHandler, LoggingMixin):
 
     def s3_write(self, log: str, remote_log_location: str, append: bool = True):
         """
-        Writes the log to the remote_log_location. Fails silently if no hook
-        was created.
+        Writes the log to the remote_log_location. Fails silently if no hook was created.
 
         :param log: the log to write to the remote_log_location
         :type log: str

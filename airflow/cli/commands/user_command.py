@@ -14,7 +14,7 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""User sub-commands"""
+"""User sub-commands."""
 import functools
 import getpass
 import json
@@ -31,7 +31,7 @@ from airflow.www.app import cached_app
 
 
 def users_list(args):
-    """Lists users at the command line"""
+    """List users at the command line."""
     appbuilder = cached_app().appbuilder  # pylint: disable=no-member
     users = appbuilder.sm.get_all_users()
     fields = ['id', 'username', 'email', 'first_name', 'last_name', 'roles']
@@ -42,7 +42,7 @@ def users_list(args):
 
 @cli_utils.action_logging
 def users_create(args):
-    """Creates new user in the DB"""
+    """Create new user in the DB."""
     appbuilder = cached_app().appbuilder  # pylint: disable=no-member
     role = appbuilder.sm.find_role(args.role)
     if not role:
@@ -71,7 +71,7 @@ def users_create(args):
 
 @cli_utils.action_logging
 def users_delete(args):
-    """Deletes user from DB"""
+    """Delete user from DB."""
     appbuilder = cached_app().appbuilder  # pylint: disable=no-member
 
     try:
@@ -87,7 +87,7 @@ def users_delete(args):
 
 @cli_utils.action_logging
 def users_manage_role(args, remove=False):
-    """Deletes or appends user roles"""
+    """Delete or appends user roles."""
     if not args.username and not args.email:
         raise SystemExit('Missing args: must supply one of --username or --email')
 
@@ -121,7 +121,7 @@ def users_manage_role(args, remove=False):
 
 
 def users_export(args):
-    """Exports all users to the json file"""
+    """Export all users to the json file."""
     appbuilder = cached_app().appbuilder  # pylint: disable=no-member
     users = appbuilder.sm.get_all_users()
     fields = ['id', 'username', 'email', 'first_name', 'last_name', 'roles']
@@ -148,7 +148,7 @@ def users_export(args):
 
 @cli_utils.action_logging
 def users_import(args):
-    """Imports users from the json file"""
+    """Import users from the json file."""
     json_file = getattr(args, 'import')
     if not os.path.exists(json_file):
         print("File '{}' does not exist")

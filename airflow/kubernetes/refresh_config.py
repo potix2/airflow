@@ -16,7 +16,8 @@
 # under the License.
 
 """
-NOTE: this module can be removed once upstream client supports token refresh
+NOTE: this module can be removed once upstream client supports token refresh.
+
 see: https://github.com/kubernetes-client/python/issues/741
 """
 
@@ -40,8 +41,10 @@ def _parse_timestamp(ts_str: str) -> int:
 
 class RefreshKubeConfigLoader(KubeConfigLoader):
     """
-    Patched KubeConfigLoader, this subclass takes expirationTimestamp into
-    account and sets api key refresh callback hook in Configuration object
+    Patched KubeConfigLoader.
+
+    This subclass takes expirationTimestamp into account and sets api key refresh callback hook in
+    Configuration object.
     """
 
     def __init__(self, *args, **kwargs):
@@ -50,9 +53,10 @@ class RefreshKubeConfigLoader(KubeConfigLoader):
 
     def _load_from_exec_plugin(self):
         """
-        We override _load_from_exec_plugin method to also read and store
-        expiration timestamp for aws-iam-authenticator. It will be later
-        used for api token refresh.
+        Read and store additional config expirationTimestamp for aws-iam-authenticator.
+
+        This function is override upstream _load_from_exec_plugin method function. It will be later used for
+        api token refresh.
         """
         if 'exec' not in self._user:
             return None
@@ -70,7 +74,7 @@ class RefreshKubeConfigLoader(KubeConfigLoader):
             logging.error(str(e))
 
     def refresh_api_key(self, client_configuration):
-        """Refresh API key if expired"""
+        """Refresh API key if expired."""
         if self.api_key_expire_ts and time.time() >= self.api_key_expire_ts:
             self.load_and_set(client_configuration)
 
@@ -81,8 +85,9 @@ class RefreshKubeConfigLoader(KubeConfigLoader):
 
 class RefreshConfiguration(Configuration):
     """
-    Patched Configuration, this subclass taskes api key refresh callback hook
-    into account
+    Patched configuration.
+
+    This subclass takes api key refresh callback hook into account.
     """
 
     def __init__(self, *args, **kwargs):
@@ -97,8 +102,9 @@ class RefreshConfiguration(Configuration):
 
 def _get_kube_config_loader_for_yaml_file(filename, **kwargs) -> Optional[RefreshKubeConfigLoader]:
     """
-    Adapted from the upstream _get_kube_config_loader_for_yaml_file function, changed
-    KubeConfigLoader to RefreshKubeConfigLoader
+    Create RefreshKubeConfigLoader from KubeConfigLoader.
+
+    This function is adapted from the upstream _get_kube_config_loader_for_yaml_file function.
     """
     with open(filename) as f:
         return RefreshKubeConfigLoader(
@@ -110,7 +116,11 @@ def _get_kube_config_loader_for_yaml_file(filename, **kwargs) -> Optional[Refres
 
 def load_kube_config(client_configuration, config_file=None, context=None):
     """
-    Adapted from the upstream load_kube_config function, changes:
+    Load authentication and cluster information from kube-config file and store them.
+
+    This function is adapted from the upstream load_kube_config function.
+
+    Changes:
         - removed persist_config argument since it's not being used
         - remove `client_configuration is None` branch since we always pass
         in client configuration

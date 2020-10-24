@@ -52,7 +52,7 @@ from airflow.utils.state import State
 )
 @provide_session
 def get_task_instance(dag_id: str, dag_run_id: str, task_id: str, session=None):
-    """Get task instance"""
+    """Get task instance."""
     query = (
         session.query(TI)
         .filter(TI.dag_id == dag_id)

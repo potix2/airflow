@@ -28,12 +28,12 @@ from airflow.utils.log.logging_mixin import LoggingMixin
 
 class DatadogHook(BaseHook, LoggingMixin):
     """
-    Uses datadog API to send metrics of practically anything measurable,
-    so it's possible to track # of db records inserted/deleted, records read
+    Use datadog API to send metrics of practically anything measurable.
+
+    So it's possible to track # of db records inserted/deleted, records read
     from file and many other useful metrics.
 
-    Depends on the datadog API, which has to be deployed on the same server where
-    Airflow runs.
+    Depend on the datadog API, which has to be deployed on the same server where Airflow runs.
 
     :param datadog_conn_id: The connection to datadog, containing metadata for api keys.
     :param datadog_conn_id: str
@@ -57,7 +57,7 @@ class DatadogHook(BaseHook, LoggingMixin):
         initialize(api_key=self.api_key, app_key=self.app_key)
 
     def validate_response(self, response: Dict[str, Any]) -> None:
-        """Validate Datadog response"""
+        """Validate Datadog response."""
         if response['status'] != 'ok':
             self.log.error("Datadog returned: %s", response)
             raise AirflowException("Error status received from Datadog")
@@ -71,7 +71,7 @@ class DatadogHook(BaseHook, LoggingMixin):
         interval: Optional[int] = None,
     ) -> Dict[str, Any]:
         """
-        Sends a single datapoint metric to DataDog
+        Send a single datapoint metric to DataDog.
 
         :param metric_name: The name of the metric
         :type metric_name: str
@@ -93,8 +93,7 @@ class DatadogHook(BaseHook, LoggingMixin):
 
     def query_metric(self, query: str, from_seconds_ago: int, to_seconds_ago: int) -> Dict[str, Any]:
         """
-        Queries datadog for a specific metric, potentially with some
-        function applied to it and returns the results.
+        Query datadog for a specific metric, potentially with some function applied to it.
 
         :param query: The datadog query to execute (see datadog docs)
         :type query: str
@@ -125,7 +124,8 @@ class DatadogHook(BaseHook, LoggingMixin):
         device_name: Optional[List[str]] = None,
     ) -> Dict[str, Any]:
         """
-        Posts an event to datadog (processing finished, potentially alerts, other issues)
+        Post an event to datadog (processing finished, potentially alerts, other issues).
+
         Think about this as a means to maintain persistence of alerts, rather than
         alerting itself.
 

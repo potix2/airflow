@@ -16,7 +16,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""Add a column to track the encryption state of the 'Extra' field in connection
+"""Add a column to track the encryption state of the 'Extra' field in connection.
 
 Revision ID: bba5a7cfc896
 Revises: bbc73705a13e

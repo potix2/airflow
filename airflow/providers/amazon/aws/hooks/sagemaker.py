@@ -52,7 +52,7 @@ Position = collections.namedtuple('Position', ['timestamp', 'skip'])
 
 
 def argmin(arr, f: Callable) -> Optional[int]:
-    """Return the index, i, in arr that minimizes f(arr[i])"""
+    """Return the index, i, in arr that minimizes f(arr[i])."""
     min_value = None
     min_idx = None
     for idx, item in enumerate(arr):
@@ -153,7 +153,7 @@ class SageMakerHook(AwsBaseHook):  # pylint: disable=too-many-public-methods
 
     def tar_and_s3_upload(self, path: str, key: str, bucket: str) -> None:
         """
-        Tar the local file or directory and upload to s3
+        Tar the local file or directory and upload to s3.
 
         :param path: local file or directory
         :type path: str
@@ -197,7 +197,7 @@ class SageMakerHook(AwsBaseHook):  # pylint: disable=too-many-public-methods
 
     def check_s3_url(self, s3url: str) -> bool:
         """
-        Check if an S3 URL exists
+        Check if an S3 URL exists.
 
         :param s3url: S3 url
         :type s3url: str
@@ -221,7 +221,7 @@ class SageMakerHook(AwsBaseHook):  # pylint: disable=too-many-public-methods
 
     def check_training_config(self, training_config: dict) -> None:
         """
-        Check if a training configuration is valid
+        Check if a training configuration is valid.
 
         :param training_config: training_config
         :type training_config: dict
@@ -233,7 +233,7 @@ class SageMakerHook(AwsBaseHook):  # pylint: disable=too-many-public-methods
 
     def check_tuning_config(self, tuning_config: dict) -> None:
         """
-        Check if a tuning configuration is valid
+        Check if a tuning configuration is valid.
 
         :param tuning_config: tuning_config
         :type tuning_config: dict
@@ -245,6 +245,7 @@ class SageMakerHook(AwsBaseHook):  # pylint: disable=too-many-public-methods
     def get_log_conn(self):
         """
         This method is deprecated.
+
         Please use :py:meth:`airflow.providers.amazon.aws.hooks.logs.AwsLogsHook.get_conn` instead.
         """
         warnings.warn(
@@ -259,8 +260,8 @@ class SageMakerHook(AwsBaseHook):  # pylint: disable=too-many-public-methods
     def log_stream(self, log_group, stream_name, start_time=0, skip=0):
         """
         This method is deprecated.
-        Please use
-        :py:meth:`airflow.providers.amazon.aws.hooks.logs.AwsLogsHook.get_log_events` instead.
+
+        Please use :py:meth:`airflow.providers.amazon.aws.hooks.logs.AwsLogsHook.get_log_events` instead.
         """
         warnings.warn(
             "Method `log_stream` has been deprecated. "
@@ -274,8 +275,9 @@ class SageMakerHook(AwsBaseHook):  # pylint: disable=too-many-public-methods
 
     def multi_stream_iter(self, log_group: str, streams: list, positions=None) -> Generator:
         """
-        Iterate over the available events coming from a set of log streams in a single log group
-        interleaving the events from each stream so they're yielded in timestamp order.
+        Iterate over the available events coming from a set of log streams.
+
+        It's interleaving the events from each stream so they're yielded in timestamp order.
 
         :param log_group: The name of the log group.
         :type log_group: str
@@ -319,7 +321,7 @@ class SageMakerHook(AwsBaseHook):  # pylint: disable=too-many-public-methods
         max_ingestion_time: Optional[int] = None,
     ):
         """
-        Create a training job
+        Create a training job.
 
         :param config: the config for training
         :type config: dict
@@ -370,7 +372,7 @@ class SageMakerHook(AwsBaseHook):  # pylint: disable=too-many-public-methods
         max_ingestion_time: Optional[int] = None,
     ):
         """
-        Create a tuning job
+        Create a tuning job.
 
         :param config: the config for tuning
         :type config: dict
@@ -406,7 +408,7 @@ class SageMakerHook(AwsBaseHook):  # pylint: disable=too-many-public-methods
         max_ingestion_time: Optional[int] = None,
     ):
         """
-        Create a transform job
+        Create a transform job.
 
         :param config: the config for transform job
         :type config: dict
@@ -442,7 +444,7 @@ class SageMakerHook(AwsBaseHook):  # pylint: disable=too-many-public-methods
         max_ingestion_time: Optional[int] = None,
     ):
         """
-        Create a processing job
+        Create a processing job.
 
         :param config: the config for processing job
         :type config: dict
@@ -470,7 +472,7 @@ class SageMakerHook(AwsBaseHook):  # pylint: disable=too-many-public-methods
 
     def create_model(self, config: dict):
         """
-        Create a model job
+        Create a model job.
 
         :param config: the config for model
         :type config: dict
@@ -480,7 +482,7 @@ class SageMakerHook(AwsBaseHook):  # pylint: disable=too-many-public-methods
 
     def create_endpoint_config(self, config: dict):
         """
-        Create an endpoint config
+        Create an endpoint config.
 
         :param config: the config for endpoint-config
         :type config: dict
@@ -496,7 +498,7 @@ class SageMakerHook(AwsBaseHook):  # pylint: disable=too-many-public-methods
         max_ingestion_time: Optional[int] = None,
     ):
         """
-        Create an endpoint
+        Create an endpoint.
 
         :param config: the config for endpoint
         :type config: dict
@@ -531,7 +533,7 @@ class SageMakerHook(AwsBaseHook):  # pylint: disable=too-many-public-methods
         max_ingestion_time: Optional[int] = None,
     ):
         """
-        Update an endpoint
+        Update an endpoint.
 
         :param config: the config for endpoint
         :type config: dict
@@ -560,7 +562,7 @@ class SageMakerHook(AwsBaseHook):  # pylint: disable=too-many-public-methods
 
     def describe_training_job(self, name: str):
         """
-        Return the training job info associated with the name
+        Return the training job info associated with the name.
 
         :param name: the name of the training job
         :type name: str
@@ -578,7 +580,7 @@ class SageMakerHook(AwsBaseHook):  # pylint: disable=too-many-public-methods
         last_description: dict,
         last_describe_job_call: float,
     ):
-        """Return the training job info associated with job_name and print CloudWatch logs"""
+        """Return the training job info associated with job_name and print CloudWatch logs."""
         log_group = '/aws/sagemaker/TrainingJobs'
 
         if len(stream_names) < instance_count:
@@ -631,7 +633,7 @@ class SageMakerHook(AwsBaseHook):  # pylint: disable=too-many-public-methods
 
     def describe_tuning_job(self, name: str) -> dict:
         """
-        Return the tuning job info associated with the name
+        Return the tuning job info associated with the name.
 
         :param name: the name of the tuning job
         :type name: str
@@ -641,7 +643,7 @@ class SageMakerHook(AwsBaseHook):  # pylint: disable=too-many-public-methods
 
     def describe_model(self, name: str) -> dict:
         """
-        Return the SageMaker model info associated with the name
+        Return the SageMaker model info associated with the name.
 
         :param name: the name of the SageMaker model
         :type name: str
@@ -651,7 +653,7 @@ class SageMakerHook(AwsBaseHook):  # pylint: disable=too-many-public-methods
 
     def describe_transform_job(self, name: str) -> dict:
         """
-        Return the transform job info associated with the name
+        Return the transform job info associated with the name.
 
         :param name: the name of the transform job
         :type name: str
@@ -661,7 +663,7 @@ class SageMakerHook(AwsBaseHook):  # pylint: disable=too-many-public-methods
 
     def describe_processing_job(self, name: str) -> dict:
         """
-        Return the processing job info associated with the name
+        Return the processing job info associated with the name.
 
         :param name: the name of the processing job
         :type name: str
@@ -671,7 +673,7 @@ class SageMakerHook(AwsBaseHook):  # pylint: disable=too-many-public-methods
 
     def describe_endpoint_config(self, name: str) -> dict:
         """
-        Return the endpoint config info associated with the name
+        Return the endpoint config info associated with the name.
 
         :param name: the name of the endpoint config
         :type name: str
@@ -681,6 +683,8 @@ class SageMakerHook(AwsBaseHook):  # pylint: disable=too-many-public-methods
 
     def describe_endpoint(self, name: str) -> dict:
         """
+        Return a dictionary contains all the endpoint info.
+
         :param name: the name of the endpoint
         :type name: str
         :return: A dict contains all the endpoint info
@@ -697,7 +701,7 @@ class SageMakerHook(AwsBaseHook):  # pylint: disable=too-many-public-methods
         non_terminal_states: Optional[Set] = None,
     ):
         """
-        Check status of a SageMaker job
+        Check status of a SageMaker job.
 
         :param job_name: name of the job to check status
         :type job_name: str
@@ -762,8 +766,7 @@ class SageMakerHook(AwsBaseHook):  # pylint: disable=too-many-public-methods
         max_ingestion_time: Optional[int] = None,
     ):
         """
-        Display the logs for a given training job, optionally tailing them until the
-        job is complete.
+        Display the logs for a given training job, optionally tailing them until the job is complete.
 
         :param job_name: name of the training job to check status and display logs for
         :type job_name: str
@@ -850,8 +853,10 @@ class SageMakerHook(AwsBaseHook):  # pylint: disable=too-many-public-methods
 
     def list_training_jobs(
         self, name_contains: Optional[str] = None, max_results: Optional[int] = None, **kwargs
-    ) -> List[Dict]:  # noqa: D402
+    ) -> List[Dict]:
         """
+        List training jobs.
+
         This method wraps boto3's list_training_jobs(). The training job name and max results are configurable
         via arguments. Other arguments are not, and should be provided via kwargs. Note boto3 expects these in
         CamelCase format, for example:
@@ -914,6 +919,8 @@ class SageMakerHook(AwsBaseHook):  # pylint: disable=too-many-public-methods
         self, partial_func: Callable, result_key: str, max_results: Optional[int] = None
     ) -> List[Dict]:
         """
+        Load all results (or up to a given maximum) iteratively.
+
         All AWS boto3 list_* requests return results in batches (if the key "NextToken" is contained in the
         result, there are more results to fetch). The default AWS batch size is 10, and configurable up to
         100. This function iteratively loads all results (or up to a given maximum).

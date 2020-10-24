@@ -16,7 +16,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""Add creating_job_id to DagRun table
+"""Add creating_job_id to DagRun table.
 
 Revision ID: 364159666cbd
 Revises: 849da589634d
@@ -35,10 +35,10 @@ depends_on = None
 
 
 def upgrade():
-    """Apply Add creating_job_id to DagRun table"""
+    """Apply Add creating_job_id to DagRun table."""
     op.add_column('dag_run', sa.Column('creating_job_id', sa.Integer))
 
 
 def downgrade():
-    """Unapply Add job_id to DagRun table"""
+    """Unapply Add job_id to DagRun table."""
     op.drop_column('dag_run', 'creating_job_id')

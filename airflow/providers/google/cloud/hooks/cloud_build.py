@@ -15,7 +15,7 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""Hook for Google Cloud Build service"""
+"""Hook for Google Cloud Build service."""
 
 import time
 from typing import Any, Optional, Sequence, Union
@@ -124,8 +124,7 @@ class CloudBuildHook(GoogleBaseHook):
 
     def _wait_for_operation_to_complete(self, operation_name: str) -> None:
         """
-        Waits for the named operation to complete - checks status of the
-        asynchronous call.
+        Waits for the named operation to complete - checks status of the asynchronous call.
 
         :param operation_name: The name of the operation.
         :type operation_name: str

@@ -100,7 +100,7 @@ def trigger_dag(
     execution_date: Optional[datetime] = None,
     replace_microseconds: bool = True,
 ) -> Optional[DagRun]:
-    """Triggers execution of DAG specified by dag_id
+    """Triggers execution of DAG specified by dag_id.
 
     :param dag_id: DAG ID
     :param run_id: ID of the dag_run

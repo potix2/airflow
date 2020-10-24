@@ -16,7 +16,9 @@
 # specific language governing permissions and limitations
 # under the License.
 """
-Secrets framework provides means of getting connection objects from various sources, e.g. the following:
+Secrets framework provides means of getting connection objects from various sources.
+
+e.g. the following:
 
     * Environment variables
     * Metastore database

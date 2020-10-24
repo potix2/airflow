@@ -95,8 +95,7 @@ class MySQLToGCSOperator(BaseSQLToGCSOperator):
 
     def convert_type(self, value, schema_type: str):
         """
-        Takes a value from MySQLdb, and converts it to a value that's safe for
-        JSON/Google Cloud Storage/BigQuery.
+        Take a value from MySQLdb, and convert it to a safe value for JSON/Google Cloud Storage/BigQuery.
 
         * Datetimes are converted to UTC seconds.
         * Decimals are converted to floats.

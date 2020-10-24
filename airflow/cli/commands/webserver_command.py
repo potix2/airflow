@@ -15,7 +15,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""Webserver command"""
+"""Webserver command."""
 import hashlib
 import logging
 import os
@@ -47,6 +47,8 @@ log = logging.getLogger(__name__)
 
 class GunicornMonitor(LoggingMixin):
     """
+    Monitor the child processes of @gunicorn_master_proc.
+
     Runs forever, monitoring the child processes of @gunicorn_master_proc and
     restarting workers occasionally or when files in the plug-in directory
     has been modified.
@@ -105,8 +107,10 @@ class GunicornMonitor(LoggingMixin):
 
     def _generate_plugin_state(self) -> Dict[str, float]:
         """
-        Generate dict of filenames and last modification time of all files in settings.PLUGINS_FOLDER
-        directory.
+        Generate a plugin state.
+
+        Generate a dictionary of filenames and last modification time of all files in
+        settings.PLUGINS_FOLDER directory.
         """
         if not settings.PLUGINS_FOLDER:
             return {}
@@ -119,7 +123,7 @@ class GunicornMonitor(LoggingMixin):
 
     @staticmethod
     def _get_file_hash(fname: str):
-        """Calculate MD5 hash for file"""
+        """Get the MD5 hash for file."""
         hash_md5 = hashlib.md5()
         with open(fname, "rb") as f:
             for chunk in iter(lambda: f.read(4096), b""):
@@ -127,7 +131,7 @@ class GunicornMonitor(LoggingMixin):
         return hash_md5.hexdigest()
 
     def _get_num_ready_workers_running(self) -> int:
-        """Returns number of ready Gunicorn workers by looking for READY_PREFIX in process name"""
+        """Get number of ready Gunicorn workers by looking for READY_PREFIX in process name."""
         workers = psutil.Process(self.gunicorn_master_proc.pid).children()
 
         def ready_prefix_on_cmdline(proc):
@@ -143,12 +147,12 @@ class GunicornMonitor(LoggingMixin):
         return len(ready_workers)
 
     def _get_num_workers_running(self) -> int:
-        """Returns number of running Gunicorn workers processes"""
+        """Get number of running Gunicorn workers processes."""
         workers = psutil.Process(self.gunicorn_master_proc.pid).children()
         return len(workers)
 
     def _wait_until_true(self, fn, timeout: int = 0) -> None:
-        """Sleeps until fn is true"""
+        """Sleeps until fn is true."""
         start_time = time.time()
         while not fn():
             if 0 < timeout <= time.time() - start_time:
@@ -188,9 +192,10 @@ class GunicornMonitor(LoggingMixin):
 
     def _reload_gunicorn(self) -> None:
         """
-        Send signal to reload the gunciron configuration. When gunciorn receive signals, it reload the
-        configuration, start the new worker processes with a new configuration and gracefully
-        shutdown older workers.
+        Send signal to reload the gunciron configuration.
+
+        When gunciorn receive signals, it reload the configuration, start the new worker processes with a new
+        configuration and gracefully shutdown older workers.
         """
         # HUP: Reload the configuration.
         self.gunicorn_master_proc.send_signal(signal.SIGHUP)
@@ -314,7 +319,7 @@ class GunicornMonitor(LoggingMixin):
 
 @cli_utils.action_logging
 def webserver(args):
-    """Starts Airflow Webserver"""
+    """Start Airflow Webserver."""
     print(settings.HEADER)
 
     access_logfile = args.access_logfile or conf.get('webserver', 'access_logfile')

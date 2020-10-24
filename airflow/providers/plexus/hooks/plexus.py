@@ -27,9 +27,9 @@ from airflow.models import Variable
 
 class PlexusHook(BaseHook):
     """
-    Used for jwt token generation and storage to
-    make Plexus API calls. Requires email and password
-    Airflow variables be created.
+    Used for jwt token generation and storage to make Plexus API calls.
+
+    Requires email and password Airflow variables be created.
 
     Example:
         - export AIRFLOW_VAR_EMAIL = user@corescientific.com
@@ -65,7 +65,7 @@ class PlexusHook(BaseHook):
 
     @property
     def token(self) -> Any:
-        """Returns users token"""
+        """Returns users token."""
         if self.__token is not None:
             if arrow.get(self.__token_exp) <= arrow.now():
                 self.__token = self._generate_token()

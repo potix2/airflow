@@ -16,7 +16,7 @@
 # specific language governing permissions and limitations
 # under the License.
 #
-"""Utilities for running or stopping processes"""
+"""Utilities for running or stopping processes."""
 import errno
 import logging
 import os
@@ -46,9 +46,10 @@ DEFAULT_TIME_TO_WAIT_AFTER_SIGTERM = conf.getint('core', 'KILLED_TASK_CLEANUP_TI
 
 def reap_process_group(pgid, logger, sig=signal.SIGTERM, timeout=DEFAULT_TIME_TO_WAIT_AFTER_SIGTERM):
     """
-    Tries really hard to terminate all processes in the group (including grandchildren). Will send
-    sig (SIGTERM) to the process group of pid. If any process is alive after timeout
-    a SIGKILL will be send.
+    Try really hard to terminate all processes in the group (including grandchildren).
+
+    Will send sig (SIGTERM) to the process group of pid. If any process is alive after timeout a SIGKILL
+    will be send.
 
     :param pgid: process group id to kill
     :param logger: log handler
@@ -122,7 +123,7 @@ def reap_process_group(pgid, logger, sig=signal.SIGTERM, timeout=DEFAULT_TIME_TO
 
 def execute_in_subprocess(cmd: List[str]):
     """
-    Execute a process and stream output to logger
+    Execute a process and stream output to logger.
 
     :param cmd: command and arguments to run
     :type cmd: List[str]
@@ -142,9 +143,9 @@ def execute_in_subprocess(cmd: List[str]):
 
 def execute_interactive(cmd: List[str], **kwargs):
     """
-    Runs the new command as a subprocess and ensures that the terminal's state is restored to its original
-    state after the process is completed e.g. if the subprocess hides the cursor, it will be restored after
-    the process is completed.
+    Run command as a subprocess and ensure that the terminal's state is restored to its original state.
+
+    e.g. if the subprocess hides the cursor, it will be restored after the process is completed.
     """
     log.info("Executing cmd: %s", " ".join([shlex.quote(c) for c in cmd]))
 

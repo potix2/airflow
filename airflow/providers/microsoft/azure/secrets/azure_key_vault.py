@@ -92,7 +92,7 @@ class AzureKeyVaultBackend(BaseSecretsBackend, LoggingMixin):
 
     def get_conn_uri(self, conn_id: str) -> Optional[str]:
         """
-        Get an Airflow Connection URI from an Azure Key Vault secret
+        Get an Airflow Connection URI from an Azure Key Vault secret.
 
         :param conn_id: The Airflow connection id to retrieve
         :type conn_id: str
@@ -117,7 +117,7 @@ class AzureKeyVaultBackend(BaseSecretsBackend, LoggingMixin):
 
     def get_config(self, key: str) -> Optional[str]:
         """
-        Get Airflow Configuration
+        Get Airflow Configuration.
 
         :param key: Configuration Option Key
         :return: Configuration Option Value
@@ -146,7 +146,7 @@ class AzureKeyVaultBackend(BaseSecretsBackend, LoggingMixin):
 
     def _get_secret(self, path_prefix: str, secret_id: str) -> Optional[str]:
         """
-        Get an Azure Key Vault secret value
+        Get an Azure Key Vault secret value.
 
         :param path_prefix: Prefix for the Path to get Secret
         :type path_prefix: str

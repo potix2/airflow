@@ -15,7 +15,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""fix sqlite foreign key
+"""fix sqlite foreign key.
 
 Revision ID: 856955da8476
 Revises: f23433877c24

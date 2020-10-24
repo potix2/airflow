@@ -118,10 +118,10 @@ def _parse_netloc_to_hostname(uri_parts):
 
 class Connection(Base, LoggingMixin):  # pylint: disable=too-many-instance-attributes
     """
-    Placeholder to store information about different database instances
-    connection information. The idea here is that scripts use references to
-    database instances (conn_id) instead of hard coding hostname, logins and
-    passwords when using operators or hooks.
+    Placeholder to store information about different database instances connection information.
+
+    The idea here is that scripts use references to database instances (conn_id) instead of hard coding
+    hostname, logins and passwords when using operators or hooks.
 
     .. seealso::
         For more information on how to use this class, see: :doc:`/howto/connection/index`
@@ -219,7 +219,7 @@ class Connection(Base, LoggingMixin):  # pylint: disable=too-many-instance-attri
             self.extra = json.dumps(dict(parse_qsl(uri_parts.query, keep_blank_values=True)))
 
     def get_uri(self) -> str:
-        """Return connection in URI format"""
+        """Return connection in URI format."""
         uri = '{}://'.format(str(self.conn_type).lower().replace('_', '-'))
 
         authority_block = ''
@@ -312,7 +312,7 @@ class Connection(Base, LoggingMixin):  # pylint: disable=too-many-instance-attri
         return synonym('_extra', descriptor=property(cls.get_extra, cls.set_extra))
 
     def rotate_fernet_key(self):
-        """Encrypts data with a new key. See: :ref:`security/fernet`"""
+        """Encrypt data with a new key. See: :ref:`security/fernet`."""
         fernet = get_fernet()
         if self._password and self.is_encrypted:
             self._password = fernet.rotate(self._password.encode('utf-8')).decode()
@@ -332,8 +332,9 @@ class Connection(Base, LoggingMixin):  # pylint: disable=too-many-instance-attri
 
     def log_info(self):
         """
-        This method is deprecated. You can read each field individually or use the
-        default representation (`__repr__`).
+        This method is deprecated.
+
+        You can read each field individually or use the default representation (`__repr__`).
         """
         warnings.warn(
             "This method is deprecated. You can read each field individually or "
@@ -353,8 +354,9 @@ class Connection(Base, LoggingMixin):  # pylint: disable=too-many-instance-attri
 
     def debug_info(self):
         """
-        This method is deprecated. You can read each field individually or use the
-        default representation (`__repr__`).
+        This method is deprecated.
+
+        You can read each field individually or use the default representation (`__repr__`).
         """
         warnings.warn(
             "This method is deprecated. You can read each field individually or "

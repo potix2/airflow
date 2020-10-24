@@ -24,7 +24,7 @@ from airflow.utils.decorators import apply_defaults
 
 class SnowflakeOperator(BaseOperator):
     """
-    Executes sql code in a Snowflake database
+    Execute sql code in a Snowflake database.
 
     :param snowflake_conn_id: reference to specific snowflake connection id
     :type snowflake_conn_id: str
@@ -105,7 +105,7 @@ class SnowflakeOperator(BaseOperator):
         )
 
     def execute(self, context: Any) -> None:
-        """Run query on snowflake"""
+        """Run query on snowflake."""
         self.log.info('Executing: %s', self.sql)
         hook = self.get_hook()
         hook.run(self.sql, autocommit=self.autocommit, parameters=self.parameters)

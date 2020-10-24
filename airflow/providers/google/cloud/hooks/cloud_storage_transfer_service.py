@@ -200,8 +200,7 @@ class CloudDataTransferServiceHook(GoogleBaseHook):
     @GoogleBaseHook.fallback_to_default_project_id
     def get_transfer_job(self, job_name: str, project_id: str) -> dict:
         """
-        Gets the latest state of a long-running operation in Google Storage
-        Transfer Service.
+        Get the latest state of a long-running operation in Google Storage Transfer Service.
 
         :param job_name: (Required) Name of the job to be fetched
         :type job_name: str
@@ -221,8 +220,7 @@ class CloudDataTransferServiceHook(GoogleBaseHook):
 
     def list_transfer_job(self, request_filter: Optional[dict] = None, **kwargs) -> List[dict]:
         """
-        Lists long-running operations in Google Storage Transfer
-        Service that match the specified filter.
+        List long-running operations in Google Storage Transfer Service that match the specified filter.
 
         :param request_filter: (Required) A request filter, as described in
             https://cloud.google.com/storage-transfer/docs/reference/rest/v1/transferJobs/list#body.QUERY_PARAMETERS.filter
@@ -306,10 +304,11 @@ class CloudDataTransferServiceHook(GoogleBaseHook):
     @GoogleBaseHook.fallback_to_default_project_id
     def delete_transfer_job(self, job_name: str, project_id: str) -> None:
         """
-        Deletes a transfer job. This is a soft delete. After a transfer job is
-        deleted, the job and all the transfer executions are subject to garbage
-        collection. Transfer jobs become eligible for garbage collection
-        30 days after soft delete.
+        Delete a transfer job.
+
+        This is a soft delete. After a transfer job is deleted, the job and all the transfer executions are
+        subject to garbage collection. Transfer jobs become eligible for garbage collection 30 days after
+        soft delete.
 
         :param job_name: (Required) Name of the job to be deleted
         :type job_name: str
@@ -497,8 +496,8 @@ class CloudDataTransferServiceHook(GoogleBaseHook):
         operations: List[dict], expected_statuses: Union[Set[str], str]
     ) -> bool:
         """
-        Checks whether the operation list has an operation with the
-        expected status, then returns true
+        Check whether the operation list has an operation with the expected status, then returns true.
+
         If it encounters operations in FAILED or ABORTED state
         throw :class:`airflow.exceptions.AirflowException`.
 

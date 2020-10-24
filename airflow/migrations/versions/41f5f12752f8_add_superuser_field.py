@@ -15,7 +15,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""add superuser field
+"""add superuser field.
 
 Revision ID: 41f5f12752f8
 Revises: 03bc53e68815

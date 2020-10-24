@@ -24,7 +24,7 @@ from airflow.utils.decorators import apply_defaults
 
 class ExasolOperator(BaseOperator):
     """
-    Executes sql code in a specific Exasol database
+    Executes sql code in a specific Exasol database.
 
     :param sql: the sql code to be executed. (templated)
     :type sql: Can receive a str representing a sql statement,

@@ -30,12 +30,12 @@ class TaskMixin:
 
     @property
     def roots(self):
-        """Should return list of root operator List[BaseOperator]"""
+        """Should return list of root operator List[BaseOperator]."""
         raise NotImplementedError()
 
     @property
     def leaves(self):
-        """Should return list of leaf operator List[BaseOperator]"""
+        """Should return list of leaf operator List[BaseOperator]."""
         raise NotImplementedError()
 
     @abstractmethod
@@ -55,12 +55,12 @@ class TaskMixin:
         """
 
     def __lshift__(self, other: Union["TaskMixin", Sequence["TaskMixin"]]):
-        """Implements Task << Task"""
+        """Implements Task << Task."""
         self.set_upstream(other)
         return other
 
     def __rshift__(self, other: Union["TaskMixin", Sequence["TaskMixin"]]):
-        """Implements Task >> Task"""
+        """Implements Task >> Task."""
         self.set_downstream(other)
         return other
 

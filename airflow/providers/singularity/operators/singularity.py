@@ -30,7 +30,7 @@ from airflow.utils.decorators import apply_defaults
 
 class SingularityOperator(BaseOperator):
     """
-    Execute a command inside a Singularity container
+    Execute a command inside a Singularity container.
 
     Singularity has more seamless connection to the host than Docker, so
     no special binds are needed to ensure binding content in the user $HOME

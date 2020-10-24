@@ -16,7 +16,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""add pool_slots field to task_instance
+"""add pool_slots field to task_instance.
 
 Revision ID: a4c2fd67d16b
 Revises: 7939bcff74ba

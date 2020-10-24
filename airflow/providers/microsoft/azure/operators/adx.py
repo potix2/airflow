@@ -17,7 +17,7 @@
 # under the License.
 #
 
-"""This module contains Azure Data Explorer operators"""
+"""This module contains Azure Data Explorer operators."""
 from typing import Optional
 
 from azure.kusto.data._models import KustoResultTable
@@ -63,7 +63,7 @@ class AzureDataExplorerQueryOperator(BaseOperator):
         self.azure_data_explorer_conn_id = azure_data_explorer_conn_id
 
     def get_hook(self) -> AzureDataExplorerHook:
-        """Returns new instance of AzureDataExplorerHook"""
+        """Returns new instance of AzureDataExplorerHook."""
         return AzureDataExplorerHook(self.azure_data_explorer_conn_id)
 
     def execute(self, context: dict) -> KustoResultTable:

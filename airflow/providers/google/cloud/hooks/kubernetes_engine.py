@@ -84,6 +84,8 @@ class GKEHook(GoogleBaseHook):
 
     def wait_for_operation(self, operation: Operation, project_id: Optional[str] = None) -> Operation:
         """
+        Wait for completion of the given operation.
+
         Given an operation, continuously fetches the status from Google Cloud until either
         completion or an error occurring
 
@@ -106,7 +108,7 @@ class GKEHook(GoogleBaseHook):
 
     def get_operation(self, operation_name: str, project_id: Optional[str] = None) -> Operation:
         """
-        Fetches the operation from Google Cloud
+        Fetches the operation from Google Cloud.
 
         :param operation_name: Name of operation to fetch
         :type operation_name: str
@@ -121,7 +123,7 @@ class GKEHook(GoogleBaseHook):
     @staticmethod
     def _append_label(cluster_proto: Cluster, key: str, val: str) -> Cluster:
         """
-        Append labels to provided Cluster Protobuf
+        Append labels to provided Cluster Protobuf.
 
         Labels must fit the regex ``[a-z]([-a-z0-9]*[a-z0-9])?`` (current
          airflow version string follows semantic versioning spec: x.y.z).
@@ -144,12 +146,11 @@ class GKEHook(GoogleBaseHook):
         self, name: str, project_id: str, retry: Retry = DEFAULT, timeout: float = DEFAULT
     ) -> Optional[str]:
         """
-        Deletes the cluster, including the Kubernetes endpoint and all
-        worker nodes. Firewalls and routes that were configured during
-        cluster creation are also deleted. Other Google Compute Engine
-        resources that might be in use by the cluster (e.g. load balancer
-        resources) will not be deleted if they were not present at the
-        initial create time.
+        Delete the cluster, including the Kubernetes endpoint and all worker nodes.
+
+        Firewalls and routes that were configured during cluster creation are also deleted. Other Google
+        Compute Engine resources that might be in use by the cluster (e.g. load balancer resources) will not
+        be deleted if they were not present at the initial create time.
 
         :param name: The name of the cluster to delete
         :type name: str
@@ -182,8 +183,7 @@ class GKEHook(GoogleBaseHook):
         self, cluster: Union[Dict, Cluster], project_id: str, retry: Retry = DEFAULT, timeout: float = DEFAULT
     ) -> str:
         """
-        Creates a cluster, consisting of the specified number and type of Google Compute
-        Engine instances.
+        Create a cluster, consisting of the specified number and type of Google Compute Engine instances.
 
         :param cluster: A Cluster protobuf or dict. If dict is provided, it must
             be of the same form as the protobuf message
@@ -231,7 +231,7 @@ class GKEHook(GoogleBaseHook):
         self, name: str, project_id: str, retry: Retry = DEFAULT, timeout: float = DEFAULT
     ) -> Cluster:
         """
-        Gets details of specified cluster
+        Get details of specified cluster.
 
         :param name: The name of the cluster to retrieve
         :type name: str

@@ -28,7 +28,7 @@ log = logging.getLogger(__name__)
 
 
 def TemporaryDirectory(*args, **kwargs):  # pylint: disable=invalid-name
-    """This function is deprecated. Please use `tempfile.TemporaryDirectory`"""
+    """This function is deprecated. Please use `tempfile.TemporaryDirectory`."""
     import warnings
     from tempfile import TemporaryDirectory as TmpDir
 
@@ -42,8 +42,9 @@ def TemporaryDirectory(*args, **kwargs):  # pylint: disable=invalid-name
 
 def mkdirs(path, mode):
     """
-    Creates the directory specified by path, creating intermediate directories
-    as necessary. If directory already exists, this is a no-op.
+    Create the directory specified by path, creating intermediate directories as necessary.
+
+    If directory already exists, this is a no-op.
 
     :param path: The directory to create
     :type path: str
@@ -65,8 +66,10 @@ ZIP_REGEX = re.compile(r'((.*\.zip){})?(.*)'.format(re.escape(os.sep)))
 
 def correct_maybe_zipped(fileloc):
     """
-    If the path contains a folder with a .zip suffix, then
-    the folder is treated as a zip archive and path to zip is returned.
+    Return a path to zip.
+
+    If the path contains a folder with a .zip suffix, then the folder is treated as a zip archive and path
+    to zip is returned.
     """
     _, archive, _ = ZIP_REGEX.search(fileloc).groups()
     if archive and zipfile.is_zipfile(archive):
@@ -77,8 +80,10 @@ def correct_maybe_zipped(fileloc):
 
 def open_maybe_zipped(fileloc, mode='r'):
     """
-    Opens the given file. If the path contains a folder with a .zip suffix, then
-    the folder is treated as a zip archive, opening the file inside the archive.
+    Open the given file.
+
+    If the path contains a folder with a .zip suffix, then the folder is treated as a zip archive, opening
+    the file inside the archive.
 
     :return: a file object, as in `open`, or as in `ZipFile.open`.
     """

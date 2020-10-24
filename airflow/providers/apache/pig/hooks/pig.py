@@ -42,7 +42,7 @@ class PigCliHook(BaseHook):
 
     def run_cli(self, pig: str, pig_opts: Optional[str] = None, verbose: bool = True) -> Any:
         """
-        Run an pig script using the pig cli
+        Run an pig script using the pig cli.
 
         >>> ph = PigCliHook()
         >>> result = ph.run_cli("ls /;", pig_opts="-x mapreduce")
@@ -87,7 +87,7 @@ class PigCliHook(BaseHook):
                 return stdout
 
     def kill(self) -> None:
-        """Kill Pig job"""
+        """Kill Pig job."""
         if self.sub_process:
             if self.sub_process.poll() is None:
                 self.log.info("Killing the Pig job")

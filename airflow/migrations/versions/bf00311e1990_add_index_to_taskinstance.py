@@ -16,7 +16,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""add index to taskinstance
+"""add index to taskinstance.
 
 Revision ID: bf00311e1990
 Revises: dd25f486b8ea

@@ -16,13 +16,13 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""This module contains AWS Lambda hook"""
+"""This module contains AWS Lambda hook."""
 from airflow.providers.amazon.aws.hooks.base_aws import AwsBaseHook
 
 
 class AwsLambdaHook(AwsBaseHook):
     """
-    Interact with AWS Lambda
+    Interact with AWS Lambda.
 
     Additional arguments (such as ``aws_conn_id``) may be specified and
     are passed down to the underlying AwsBaseHook.
@@ -57,7 +57,7 @@ class AwsLambdaHook(AwsBaseHook):
         super().__init__(*args, **kwargs)
 
     def invoke_lambda(self, payload: str) -> str:
-        """Invoke Lambda Function"""
+        """Invoke Lambda Function."""
         response = self.conn.invoke(
             FunctionName=self.function_name,
             InvocationType=self.invocation_type,

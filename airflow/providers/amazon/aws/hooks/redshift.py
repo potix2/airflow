@@ -24,7 +24,7 @@ from airflow.providers.amazon.aws.hooks.base_aws import AwsBaseHook
 
 class RedshiftHook(AwsBaseHook):
     """
-    Interact with AWS Redshift, using the boto3 library
+    Interact with AWS Redshift, using the boto3 library.
 
     Additional arguments (such as ``aws_conn_id``) may be specified and
     are passed down to the underlying AwsBaseHook.
@@ -40,7 +40,7 @@ class RedshiftHook(AwsBaseHook):
     # TODO: Wrap create_cluster_snapshot
     def cluster_status(self, cluster_identifier: str) -> str:
         """
-        Return status of a cluster
+        Return status of a cluster.
 
         :param cluster_identifier: unique identifier of a cluster
         :type cluster_identifier: str
@@ -58,7 +58,7 @@ class RedshiftHook(AwsBaseHook):
         final_cluster_snapshot_identifier: Optional[str] = None,
     ):
         """
-        Delete a cluster and optionally create a snapshot
+        Delete a cluster and optionally create a snapshot.
 
         :param cluster_identifier: unique identifier of a cluster
         :type cluster_identifier: str
@@ -78,7 +78,7 @@ class RedshiftHook(AwsBaseHook):
 
     def describe_cluster_snapshots(self, cluster_identifier: str) -> Optional[List[str]]:
         """
-        Gets a list of snapshots for a cluster
+        Get a list of snapshots for a cluster.
 
         :param cluster_identifier: unique identifier of a cluster
         :type cluster_identifier: str
@@ -93,7 +93,7 @@ class RedshiftHook(AwsBaseHook):
 
     def restore_from_cluster_snapshot(self, cluster_identifier: str, snapshot_identifier: str) -> str:
         """
-        Restores a cluster from its snapshot
+        Restore a cluster from its snapshot.
 
         :param cluster_identifier: unique identifier of a cluster
         :type cluster_identifier: str
@@ -107,7 +107,7 @@ class RedshiftHook(AwsBaseHook):
 
     def create_cluster_snapshot(self, snapshot_identifier: str, cluster_identifier: str) -> str:
         """
-        Creates a snapshot of a cluster
+        Create a snapshot of a cluster.
 
         :param snapshot_identifier: unique identifier for a snapshot of a cluster
         :type snapshot_identifier: str

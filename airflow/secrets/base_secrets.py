@@ -23,7 +23,7 @@ if TYPE_CHECKING:
 
 
 class BaseSecretsBackend(ABC):
-    """Abstract base class to retrieve secrets given a conn_id and construct a Connection object"""
+    """Abstract base class to retrieve secrets given a conn_id and construct a Connection object."""
 
     def __init__(self, **kwargs):
         pass
@@ -31,7 +31,7 @@ class BaseSecretsBackend(ABC):
     @staticmethod
     def build_path(path_prefix: str, secret_id: str, sep: str = "/") -> str:
         """
-        Given conn_id, build path for Secrets Backend
+        Given conn_id, build path for Secrets Backend.
 
         :param path_prefix: Prefix of the path to get secret
         :type path_prefix: str
@@ -44,7 +44,7 @@ class BaseSecretsBackend(ABC):
 
     def get_conn_uri(self, conn_id: str) -> Optional[str]:
         """
-        Get conn_uri from Secrets Backend
+        Get conn_uri from Secrets Backend.
 
         :param conn_id: connection id
         :type conn_id: str
@@ -68,7 +68,7 @@ class BaseSecretsBackend(ABC):
 
     def get_variable(self, key: str) -> Optional[str]:
         """
-        Return value for Airflow Connection
+        Return value for Airflow Connection.
 
         :param key: Variable Key
         :return: Variable Value
@@ -77,7 +77,7 @@ class BaseSecretsBackend(ABC):
 
     def get_config(self, key: str) -> Optional[str]:  # pylint: disable=unused-argument
         """
-        Return value for Airflow Config Key
+        Return value for Airflow Config Key.
 
         :param key: Config Key
         :return: Config Value

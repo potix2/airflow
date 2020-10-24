@@ -29,10 +29,10 @@ from airflow.utils.decorators import apply_defaults
 
 class S3FileTransformOperator(BaseOperator):
     """
-    Copies data from a source S3 location to a temporary location on the
-    local filesystem. Runs a transformation on this file as specified by
-    the transformation script and uploads the output to a destination S3
-    location.
+    Copy data from a source S3 location to a temporary location on the local filesystem.
+
+    Run a transformation on this file as specified by the transformation script and uploads the output to a
+    destination S3 location.
 
     The locations of the source and the destination files in the local
     filesystem is provided as an first and second arguments to the

@@ -19,7 +19,7 @@
 # under the License.
 
 
-"""Nice formatted include for examples"""
+"""Nice formatted include for examples."""
 from os import path
 
 from docutils import nodes

@@ -51,9 +51,10 @@ from airflow.utils.types import DagRunType
 
 class BackfillJob(BaseJob):
     """
-    A backfill job consists of a dag or subdag for a specific time range. It
-    triggers a set of task instance runs, in the right order and lasts for
-    as long as it takes for the set of task instance to be completed.
+    A backfill job consists of a dag or subdag for a specific time range.
+
+    It triggers a set of task instance runs, in the right order and lasts for as long as it takes for the set
+    of task instance to be completed.
     """
 
     STATES_COUNT_AS_RUNNING = (State.RUNNING, State.QUEUED)
@@ -62,13 +63,13 @@ class BackfillJob(BaseJob):
 
     class _DagRunTaskStatus:
         """
-        Internal status of the backfill job. This class is intended to be instantiated
-        only within a BackfillJob instance and will track the execution of tasks,
-        e.g. running, skipped, succeeded, failed, etc. Information about the dag runs
-        related to the backfill job are also being tracked in this structure,
-        .e.g finished runs, etc. Any other status related information related to the
-        execution of dag runs / tasks can be included in this structure since it makes
-        it easier to pass it around.
+        Internal status of the backfill job.
+
+        This class is intended to be instantiated only within a BackfillJob instance and will track the
+        execution of tasks, e.g. running, skipped, succeeded, failed, etc. Information about the dag runs
+        related to the backfill job are also being tracked in this structure, .e.g finished runs, etc. Any
+        other status related information related to the execution of dag runs / tasks can be included in this
+        structure since it makes it easier to pass it around.
 
         :param to_run: Tasks to run in the backfill
         :type to_run: dict[tuple[TaskInstanceKey], airflow.models.TaskInstance]
@@ -188,8 +189,9 @@ class BackfillJob(BaseJob):
     @provide_session
     def _update_counters(self, ti_status, session=None):
         """
-        Updates the counters per state of the tasks that were running. Can re-add
-        to tasks to run in case required.
+        Update the counters per state of the tasks that were running.
+
+        Can re-add to tasks to run in case required.
 
         :param ti_status: the internal status of the backfill job tasks
         :type ti_status: BackfillJob._DagRunTaskStatus
@@ -254,8 +256,7 @@ class BackfillJob(BaseJob):
 
     def _manage_executor_state(self, running):
         """
-        Checks if the executor agrees with the state of task instances
-        that are running
+        Check if the executor agrees with the state of task instances that are running.
 
         :param running: dict of key, task to verify
         """
@@ -285,9 +286,10 @@ class BackfillJob(BaseJob):
     @provide_session
     def _get_dag_run(self, run_date: datetime, dag: DAG, session: Session = None):
         """
-        Returns a dag run for the given run date, which will be matched to an existing
-        dag run if available or create a new dag run otherwise. If the max_active_runs
-        limit is reached, this function will return None.
+        Return a dag run for the given run date.
+
+        It will be matched to an existing dag run if available or create a new dag run otherwise. If the
+        max_active_runs limit is reached, this function will return None.
 
         :param run_date: the execution date for the dag run
         :param dag: DAG
@@ -339,8 +341,7 @@ class BackfillJob(BaseJob):
     @provide_session
     def _task_instances_for_dag_run(self, dag_run, session=None):
         """
-        Returns a map of task instance key to task instance object for the tasks to
-        run in the given dag run.
+        Return a map of task instance key to task instance object for the tasks to run in the given dag run.
 
         :param dag_run: the dag run to get the tasks from
         :type dag_run: airflow.models.DagRun
@@ -400,9 +401,10 @@ class BackfillJob(BaseJob):
         session=None,
     ):
         """
-        Process a set of task instances from a set of dag runs. Special handling is done
-        to account for different task instance states that could be present when running
-        them in a backfill process.
+        Process a set of task instances from a set of dag runs.
+
+        Special handling is done to account for different task instance states that could be present when
+        running them in a backfill process.
 
         :param ti_status: the internal status of the job
         :type ti_status: BackfillJob._DagRunTaskStatus
@@ -692,9 +694,10 @@ class BackfillJob(BaseJob):
     @provide_session
     def _execute_for_run_dates(self, run_dates, ti_status, executor, pickle_id, start_date, session=None):
         """
-        Computes the dag runs and their respective task instances for
-        the given run dates and executes the task instances.
-        Returns a list of execution dates of the dag runs that were executed.
+        Compute their respective task instances for the give run dates and execute them.
+
+        Compute the dag runs and their respective task instances for the given run dates and executes the
+        task instances. Return a list of execution dates of the dag runs that were executed.
 
         :param run_dates: Execution dates for dag runs
         :type run_dates: list
@@ -748,7 +751,9 @@ class BackfillJob(BaseJob):
     @provide_session
     def _execute(self, session=None):
         """
-        Initializes all components required to run a dag for a specified date range and
+        Initialize all components required and call helper method.
+
+        Initialize all components required to run a dag for a specified date range and
         calls helper method to execute the tasks.
         """
         ti_status = BackfillJob._DagRunTaskStatus()
@@ -832,6 +837,8 @@ class BackfillJob(BaseJob):
     @provide_session
     def reset_state_for_orphaned_tasks(self, filter_by_dag_run=None, session=None):
         """
+        Check if there are any tasks in the dagrun (or all).
+
         This function checks if there are any tasks in the dagrun (or all) that
         have a schedule or queued states but are not known by the executor. If
         it finds those it will reset the state to None so they will get picked

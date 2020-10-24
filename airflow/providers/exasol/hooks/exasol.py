@@ -63,7 +63,7 @@ class ExasolHook(DbApiHook):
 
     def get_pandas_df(self, sql: Union[str, list], parameters: Optional[dict] = None, **kwargs) -> None:
         """
-        Executes the sql and returns a pandas dataframe
+        Execute the sql and returns a pandas dataframe.
 
         :param sql: the sql statement to be executed (str) or a list of
             sql statements to execute
@@ -108,9 +108,9 @@ class ExasolHook(DbApiHook):
 
     def run(self, sql: Union[str, list], autocommit: bool = False, parameters: Optional[dict] = None) -> None:
         """
-        Runs a command or a list of commands. Pass a list of sql
-        statements to the sql parameter to get them to execute
-        sequentially
+        Run a command or a list of commands.
+
+        Pass a list of sql statements to the sql parameter to get them to execute sequentially.
 
         :param sql: the sql statement to be executed (str) or a list of
             sql statements to execute
@@ -139,7 +139,7 @@ class ExasolHook(DbApiHook):
 
     def set_autocommit(self, conn, autocommit: bool) -> None:
         """
-        Sets the autocommit flag on the connection
+        Set the autocommit flag on the connection.
 
         :param conn: Connection to set autocommit setting to.
         :type conn: connection object
@@ -173,8 +173,9 @@ class ExasolHook(DbApiHook):
     @staticmethod
     def _serialize_cell(cell, conn=None) -> object:
         """
-        Exasol will adapt all arguments to the execute() method internally,
-        hence we return cell without any conversion.
+        Exasol will adapt all arguments to the execute() method internally.
+
+        Hence we return cell without any conversion.
 
         :param cell: The cell to insert into the table
         :type cell: object

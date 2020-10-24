@@ -16,7 +16,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""add root_dag_id to DAG
+"""add root_dag_id to DAG.
 
 Revision ID: b3b105409875
 Revises: d38e04c12aa2
@@ -35,12 +35,12 @@ depends_on = None
 
 
 def upgrade():
-    """Apply add root_dag_id to DAG"""
+    """Apply add root_dag_id to DAG."""
     op.add_column('dag', sa.Column('root_dag_id', sa.String(length=250), nullable=True))
     op.create_index('idx_root_dag_id', 'dag', ['root_dag_id'], unique=False)
 
 
 def downgrade():
-    """Unapply add root_dag_id to DAG"""
+    """Unapply add root_dag_id to DAG."""
     op.drop_index('idx_root_dag_id', table_name='dag')
     op.drop_column('dag', 'root_dag_id')

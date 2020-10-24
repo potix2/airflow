@@ -451,7 +451,7 @@ class MLEngineCreateModelOperator(BaseOperator):
 
 class MLEngineGetModelOperator(BaseOperator):
     """
-    Gets a particular model
+    Gets a particular model.
 
     .. seealso::
         For more information on how to use this operator, take a look at the guide:
@@ -725,7 +725,7 @@ class MLEngineManageVersionOperator(BaseOperator):
 
 class MLEngineCreateVersionOperator(BaseOperator):
     """
-    Creates a new version in the model
+    Creates a new version in the model.
 
     .. seealso::
         For more information on how to use this operator, take a look at the guide:
@@ -893,7 +893,7 @@ class MLEngineSetDefaultVersionOperator(BaseOperator):
 
 class MLEngineListVersionsOperator(BaseOperator):
     """
-    Lists all available versions of the model
+    Lists all available versions of the model.
 
     .. seealso::
         For more information on how to use this operator, take a look at the guide:

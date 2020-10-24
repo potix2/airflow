@@ -76,7 +76,8 @@ class DingdingHook(HttpHook):
 
     def _build_message(self) -> str:
         """
-        Build different type of Dingding message
+        Build different type of Dingding message.
+
         As most commonly used type, text message just need post message content
         rather than a dict like ``{'content': 'message'}``
         """
@@ -92,8 +93,9 @@ class DingdingHook(HttpHook):
 
     def get_conn(self, headers: Optional[dict] = None) -> Session:
         """
-        Overwrite HttpHook get_conn because just need base_url and headers and
-        not don't need generic params
+        Overwrite HttpHook get_conn.
+
+        Because just need base_url and headers and not don't need generic params.
 
         :param headers: additional headers to be passed through as a dictionary
         :type headers: dict
@@ -106,7 +108,7 @@ class DingdingHook(HttpHook):
         return session
 
     def send(self) -> None:
-        """Send Dingding message"""
+        """Send Dingding message."""
         support_type = ['text', 'link', 'markdown', 'actionCard', 'feedCard']
         if self.message_type not in support_type:
             raise ValueError(

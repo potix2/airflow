@@ -16,7 +16,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""Add scheduling_decision to DagRun and DAG
+"""Add scheduling_decision to DagRun and DAG.
 
 Revision ID: 98271e7606e2
 Revises: bef4f3d11e8b
@@ -36,7 +36,7 @@ depends_on = None
 
 
 def upgrade():
-    """Apply Add scheduling_decision to DagRun and DAG"""
+    """Apply Add scheduling_decision to DagRun and DAG."""
     conn = op.get_bind()  # pylint: disable=no-member
     is_mysql = bool(conn.dialect.name == "mysql")
     is_sqlite = bool(conn.dialect.name == "sqlite")
@@ -76,7 +76,7 @@ def upgrade():
 
 
 def downgrade():
-    """Unapply Add scheduling_decision to DagRun and DAG"""
+    """Unapply Add scheduling_decision to DagRun and DAG."""
     with op.batch_alter_table('dag_run', schema=None) as batch_op:
         batch_op.drop_index('idx_last_scheduling_decision')
         batch_op.drop_column('last_scheduling_decision')

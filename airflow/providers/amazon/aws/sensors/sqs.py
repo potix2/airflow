@@ -15,7 +15,7 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""Reads and then deletes the message from SQS queue"""
+"""Reads and then deletes the message from SQS queue."""
 from typing import Optional
 
 from airflow.exceptions import AirflowException
@@ -61,7 +61,7 @@ class SQSSensor(BaseSensorOperator):
 
     def poke(self, context):
         """
-        Check for message on subscribed queue and write to xcom the message with key ``messages``
+        Check for message on subscribed queue and write to xcom the message with key ``messages``.
 
         :param context: the context object
         :type context: dict
@@ -98,7 +98,7 @@ class SQSSensor(BaseSensorOperator):
         return False
 
     def get_hook(self) -> SQSHook:
-        """Create and return an SQSHook"""
+        """Create and return an SQSHook."""
         if self.hook:
             return self.hook
 

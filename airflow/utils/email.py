@@ -76,7 +76,7 @@ def send_email_smtp(
     **kwargs,
 ):
     """
-    Send an email with html content
+    Send an email with html content.
 
     >>> send_email('test@example.com', 'foo', '<b>Foo</b> bar', ['/dev/null'], dryrun=True)
     """
@@ -110,8 +110,7 @@ def build_mime_message(
     custom_headers: Optional[Dict[str, Any]] = None,
 ) -> Tuple[MIMEMultipart, List[str]]:
     """
-    Build a MIME message that can be used to send an email and
-    returns full list of recipients.
+    Build a MIME message that can be used to send an email and returns full list of recipients.
 
     :param mail_from: Email address to set as email's from
     :param to: List of email addresses to set as email's to

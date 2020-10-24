@@ -29,7 +29,7 @@ from airflow.models import Connection
 
 
 class PrestoException(Exception):
-    """Presto exception"""
+    """Presto exception."""
 
 
 def _boolify(value):
@@ -57,7 +57,7 @@ class PrestoHook(DbApiHook):
     default_conn_name = 'presto_default'
 
     def get_conn(self) -> Connection:
-        """Returns a connection object"""
+        """Returns a connection object."""
         db = self.get_connection(
             self.presto_conn_id  # type: ignore[attr-defined]  # pylint: disable=no-member
         )
@@ -102,7 +102,7 @@ class PrestoHook(DbApiHook):
         return presto_conn
 
     def get_isolation_level(self) -> Any:
-        """Returns an isolation level"""
+        """Returns an isolation level."""
         db = self.get_connection(
             self.presto_conn_id  # type: ignore[attr-defined]  # pylint: disable=no-member
         )
@@ -114,7 +114,7 @@ class PrestoHook(DbApiHook):
         return sql.strip().rstrip(';')
 
     def get_records(self, hql, parameters: Optional[dict] = None):
-        """Get a set of records from Presto"""
+        """Get a set of records from Presto."""
         try:
             return super().get_records(self._strip_sql(hql), parameters)
         except DatabaseError as e:

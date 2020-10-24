@@ -16,7 +16,7 @@
 # specific language governing permissions and limitations
 # under the License.
 #
-"""Utilities for creating a virtual environment"""
+"""Utilities for creating a virtual environment."""
 import os
 from typing import List, Optional
 
@@ -46,7 +46,7 @@ def prepare_virtualenv(
     venv_directory: str, python_bin: str, system_site_packages: bool, requirements: List[str]
 ) -> str:
     """
-    Creates a virtual environment and installs the additional python packages
+    Creates a virtual environment and installs the additional python packages.
 
     :param venv_directory: The path for directory where the environment will be created
     :type venv_directory: str

@@ -94,7 +94,7 @@ class CloudFormationDeleteStackSensor(BaseSensorOperator):
         raise ValueError(f'Stack {self.stack_name} in bad state: {stack_status}')
 
     def get_hook(self) -> AWSCloudFormationHook:
-        """Create and return an AWSCloudFormationHook"""
+        """Create and return an AWSCloudFormationHook."""
         if self.hook:
             return self.hook
 

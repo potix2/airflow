@@ -25,7 +25,7 @@ from airflow.utils.decorators import apply_defaults
 
 class GrpcOperator(BaseOperator):
     """
-    Calls a gRPC endpoint to execute an action
+    Call a gRPC endpoint to execute an action.
 
     :param stub_class: The stub client to use for this gRPC call
     :type stub_class: gRPC stub class generated from proto file

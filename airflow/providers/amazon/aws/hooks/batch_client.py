@@ -17,7 +17,7 @@
 # under the License.
 
 """
-A client for AWS batch services
+A client for AWS batch services.
 
 .. seealso::
 
@@ -61,7 +61,7 @@ class AwsBatchProtocol(Protocol):
 
     def describe_jobs(self, jobs: List[str]) -> Dict:
         """
-        Get job descriptions from AWS batch
+        Get job descriptions from AWS batch.
 
         :param jobs: a list of JobId to describe
         :type jobs: List[str]
@@ -73,7 +73,7 @@ class AwsBatchProtocol(Protocol):
 
     def get_waiter(self, waiterName: str) -> botocore.waiter.Waiter:
         """
-        Get an AWS Batch service waiter
+        Get an AWS Batch service waiter.
 
         :param waiterName: The name of the waiter.  The name should match
             the name (including the casing) of the key name in the waiter
@@ -108,7 +108,7 @@ class AwsBatchProtocol(Protocol):
         containerOverrides: Dict,
     ) -> Dict:
         """
-        Submit a batch job
+        Submit a batch job.
 
         :param jobName: the name for the AWS batch job
         :type jobName: str
@@ -135,7 +135,7 @@ class AwsBatchProtocol(Protocol):
 
     def terminate_job(self, jobId: str, reason: str) -> Dict:
         """
-        Terminate a batch job
+        Terminate a batch job.
 
         :param jobId: a job ID to terminate
         :type jobId: str
@@ -209,7 +209,7 @@ class AwsBatchClientHook(AwsBaseHook):
     @property
     def client(self) -> Union[AwsBatchProtocol, botocore.client.BaseClient]:  # noqa: D402
         """
-        An AWS API client for batch services, like ``boto3.client('batch')``
+        An AWS API client for batch services, like ``boto3.client('batch')``.
 
         :return: a boto3 'batch' client for the ``.region_name``
         :rtype: Union[AwsBatchProtocol, botocore.client.BaseClient]
@@ -218,7 +218,7 @@ class AwsBatchClientHook(AwsBaseHook):
 
     def terminate_job(self, job_id: str, reason: str) -> Dict:
         """
-        Terminate a batch job
+        Terminate a batch job.
 
         :param job_id: a job ID to terminate
         :type job_id: str
@@ -235,8 +235,9 @@ class AwsBatchClientHook(AwsBaseHook):
 
     def check_job_success(self, job_id: str) -> bool:
         """
-        Check the final status of the batch job; return True if the job
-        'SUCCEEDED', else raise an AirflowException
+        Check the final status of the batch job.
+
+        It returns True if the job 'SUCCEEDED', else raise an AirflowException.
 
         :param job_id: a batch job ID
         :type job_id: str
@@ -262,7 +263,7 @@ class AwsBatchClientHook(AwsBaseHook):
 
     def wait_for_job(self, job_id: str, delay: Union[int, float, None] = None) -> None:
         """
-        Wait for batch job to complete
+        Wait for batch job to complete.
 
         :param job_id: a batch job ID
         :type job_id: str
@@ -279,8 +280,9 @@ class AwsBatchClientHook(AwsBaseHook):
 
     def poll_for_job_running(self, job_id: str, delay: Union[int, float, None] = None) -> None:
         """
-        Poll for job running. The status that indicates a job is running or
-        already complete are: 'RUNNING'|'SUCCEEDED'|'FAILED'.
+        Poll for job running.
+
+        The status that indicates a job is running or already complete are: 'RUNNING'|'SUCCEEDED'|'FAILED'.
 
         So the status options that this will wait for are the transitions from:
         'SUBMITTED'>'PENDING'>'RUNNABLE'>'STARTING'>'RUNNING'|'SUCCEEDED'|'FAILED'
@@ -303,8 +305,7 @@ class AwsBatchClientHook(AwsBaseHook):
 
     def poll_for_job_complete(self, job_id: str, delay: Union[int, float, None] = None) -> None:
         """
-        Poll for job completion. The status that indicates job completion
-        are: 'SUCCEEDED'|'FAILED'.
+        Poll for job completion. The status that indicates job completion are: 'SUCCEEDED'|'FAILED'.
 
         So the status options that this will wait for are the transitions from:
         'SUBMITTED'>'PENDING'>'RUNNABLE'>'STARTING'>'RUNNING'>'SUCCEEDED'|'FAILED'
@@ -410,7 +411,7 @@ class AwsBatchClientHook(AwsBaseHook):
     @staticmethod
     def parse_job_description(job_id: str, response: Dict) -> Dict:
         """
-        Parse job description to extract description for job_id
+        Parse job description to extract description for job_id.
 
         :param job_id: a batch job ID
         :type job_id: str
@@ -435,10 +436,9 @@ class AwsBatchClientHook(AwsBaseHook):
         delay: Union[int, float], width: Union[int, float] = 1, minima: Union[int, float] = 0
     ) -> float:
         """
-        Use delay +/- width for random jitter
+        Use delay +/- width for random jitter.
 
-        Adding jitter to status polling can help to avoid
-        AWS batch API limits for monitoring batch jobs with
+        Adding jitter to status polling can help to avoid AWS batch API limits for monitoring batch jobs with
         a high concurrency in Airflow tasks.
 
         :param delay: number of seconds to pause;
@@ -488,9 +488,10 @@ class AwsBatchClientHook(AwsBaseHook):
     @staticmethod
     def exponential_delay(tries: int) -> float:
         """
-        An exponential back-off delay, with random jitter.  There is a maximum
-        interval of 10 minutes (with random jitter between 3 and 10 minutes).
-        This is used in the :py:meth:`.poll_for_job_status` method.
+        An exponential back-off delay, with random jitter.
+
+        There is a maximum interval of 10 minutes (with random jitter between 3 and 10 minutes). This is used
+        in the :py:meth:`.poll_for_job_status` method.
 
         :param tries: Number of tries
         :type tries: int

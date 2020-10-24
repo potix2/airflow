@@ -16,7 +16,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""add dagrun
+"""add dagrun.
 
 Revision ID: 1b38cef5b76e
 Revises: 52d714495f0

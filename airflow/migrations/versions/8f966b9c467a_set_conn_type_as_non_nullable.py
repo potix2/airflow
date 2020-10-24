@@ -16,7 +16,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""Set conn_type as non-nullable
+"""Set conn_type as non-nullable.
 
 Revision ID: 8f966b9c467a
 Revises: 3c20cacc0044
@@ -36,7 +36,7 @@ depends_on = None
 
 
 def upgrade():
-    """Apply Set conn_type as non-nullable"""
+    """Apply Set conn_type as non-nullable."""
     Base = declarative_base()
 
     class Connection(Base):
@@ -62,6 +62,6 @@ def upgrade():
 
 
 def downgrade():
-    """Unapply Set conn_type as non-nullable"""
+    """Unapply Set conn_type as non-nullable."""
     with op.batch_alter_table("connection", schema=None) as batch_op:
         batch_op.alter_column("conn_type", existing_type=sa.VARCHAR(length=500), nullable=True)

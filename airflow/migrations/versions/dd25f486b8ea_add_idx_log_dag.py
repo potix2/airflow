@@ -15,7 +15,7 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""add idx_log_dag
+"""Add idx_log_dag.
 
 Revision ID: dd25f486b8ea
 Revises: 9635ae0956e7

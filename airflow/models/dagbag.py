@@ -49,7 +49,7 @@ from airflow.utils.timeout import timeout
 
 
 class FileLoadStat(NamedTuple):
-    """Information about single file"""
+    """Information about single file."""
 
     file: str
     duration: timedelta
@@ -60,12 +60,12 @@ class FileLoadStat(NamedTuple):
 
 class DagBag(LoggingMixin):
     """
-    A dagbag is a collection of dags, parsed out of a folder tree and has high
-    level configuration settings, like what database to use as a backend and
-    what executor to use to fire off tasks. This makes it easier to run
-    distinct environments for say production and development, tests, or for
-    different teams or security profiles. What would have been system level
-    settings are now dagbag level so that one system can run multiple,
+    A dagbag is a collection of dags.
+
+    It's parsed out of a folder tree and has high level configuration settings, like what database to use
+    as a backend and what executor to use to fire off tasks. This makes it easier to run distinct
+    environments for say production and development, tests, or for different teams or security profiles.
+    What would have been system level settings are now dagbag level so that one system can run multiple,
     independent settings sets.
 
     :param dag_folder: the folder to scan to find DAGs
@@ -130,12 +130,12 @@ class DagBag(LoggingMixin):
         )
 
     def size(self) -> int:
-        """:return: the amount of dags contained in this dagbag"""
+        """The amount of dags contained in this dagbag."""
         return len(self.dags)
 
     @property
     def store_serialized_dags(self) -> bool:
-        """Whether or not to read dags from DB"""
+        """Whether or not to read dags from DB."""
         warnings.warn(
             "The store_serialized_dags property has been deprecated. Use read_dags_from_db instead.",
             DeprecationWarning,
@@ -154,7 +154,7 @@ class DagBag(LoggingMixin):
     @provide_session
     def get_dag(self, dag_id, session: Session = None):
         """
-        Gets the DAG out of the dictionary, and refreshes it if expired
+        Gets the DAG out of the dictionary, and refreshes it if expired.
 
         :param dag_id: DAG Id
         :type dag_id: str
@@ -219,7 +219,7 @@ class DagBag(LoggingMixin):
         return self.dags.get(dag_id)
 
     def _add_dag_from_db(self, dag_id: str, session: Session):
-        """Add DAG to DagBag from DB"""
+        """Add DAG to DagBag from DB."""
         from airflow.models.serialized_dag import SerializedDagModel
 
         row = SerializedDagModel.get(dag_id, session)
@@ -235,6 +235,8 @@ class DagBag(LoggingMixin):
 
     def process_file(self, filepath, only_if_updated=True, safe_mode=True):
         """
+        Import the module and look for dag objects within it.
+
         Given a path to a python module or zip file, this method imports
         the module and look for dag objects within it.
         """
@@ -420,6 +422,8 @@ class DagBag(LoggingMixin):
         safe_mode=conf.getboolean('core', 'DAG_DISCOVERY_SAFE_MODE'),
     ):
         """
+        Look for python modules, imports them and add them to the dagbag collection.
+
         Given a file path or a folder, this method looks for python modules,
         imports them and adds them to the dagbag collection.
 
@@ -499,7 +503,7 @@ class DagBag(LoggingMixin):
         Stats.timing('collect_db_dags', timezone.utcnow() - start_dttm)
 
     def dagbag_report(self):
-        """Prints a report around DagBag loading stats"""
+        """Prints a report around DagBag loading stats."""
         stats = self.dagbag_stats
         dag_folder = self.dag_folder
         duration = sum([o.duration for o in stats], timedelta()).total_seconds()

@@ -22,7 +22,7 @@ from airflow.utils.decorators import apply_defaults
 
 class GlacierCreateJobOperator(BaseOperator):
     """
-    Initiate an Amazon Glacier inventory-retrieval job
+    Initiate an Amazon Glacier inventory-retrieval job.
 
     .. seealso::
         For more information on how to use this operator, take a look at the guide:

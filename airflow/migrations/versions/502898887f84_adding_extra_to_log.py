@@ -16,7 +16,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""Adding extra to Log
+"""Adding extra to Log.
 
 Revision ID: 502898887f84
 Revises: 52d714495f0

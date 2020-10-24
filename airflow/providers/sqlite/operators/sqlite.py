@@ -24,7 +24,7 @@ from airflow.utils.decorators import apply_defaults
 
 class SqliteOperator(BaseOperator):
     """
-    Executes sql code in a specific Sqlite database
+    Executes sql code in a specific Sqlite database.
 
     :param sql: the sql code to be executed. (templated)
     :type sql: str or string pointing to a template file. File must have

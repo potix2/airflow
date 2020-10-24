@@ -23,8 +23,9 @@ from airflow.utils.decorators import apply_defaults
 
 class AzureCosmosInsertDocumentOperator(BaseOperator):
     """
-    Inserts a new document into the specified Cosmos database and collection
-    It will create both the database and collection if they do not already exist
+    Inserts a new document into the specified Cosmos database and collection.
+
+    It will create both the database and collection if they do not already exist.
 
     :param database_name: The name of the database. (templated)
     :type database_name: str

@@ -27,7 +27,7 @@ from airflow.utils.decorators import apply_defaults
 
 @attr.s(auto_attribs=True)
 class NoteBook(File):
-    """Jupyter notebook"""
+    """Jupyter notebook."""
 
     type_hint: Optional[str] = "jupyter_notebook"
     parameters: Optional[Dict] = {}
@@ -37,7 +37,7 @@ class NoteBook(File):
 
 class PapermillOperator(BaseOperator):
     """
-    Executes a jupyter notebook through papermill that is annotated with parameters
+    Executes a jupyter notebook through papermill that is annotated with parameters.
 
     :param input_nb: input notebook (can also be a NoteBook or a File inlet)
     :type input_nb: str

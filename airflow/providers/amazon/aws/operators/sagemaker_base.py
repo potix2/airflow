@@ -73,8 +73,9 @@ class SageMakerBaseOperator(BaseOperator):
 
     def parse_config_integers(self):
         """
-        Parse the integer fields of training config to integers in case the config is rendered by Jinja and
-        all fields are str.
+        Parse the integer fields of training config to integers.
+
+        In case the config is rendered by Jinja and all fields are str.
         """
         for field in self.integer_fields:
             self.parse_integer(self.config, field)
@@ -100,5 +101,5 @@ class SageMakerBaseOperator(BaseOperator):
 
     @cached_property
     def hook(self):
-        """Return SageMakerHook"""
+        """Return SageMakerHook."""
         return SageMakerHook(aws_conn_id=self.aws_conn_id)

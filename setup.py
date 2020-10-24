@@ -45,7 +45,7 @@ except FileNotFoundError:
 
 
 def airflow_test_suite():
-    """Test suite for Airflow tests"""
+    """Test suite for Airflow tests."""
     test_loader = unittest.TestLoader()
     test_suite = test_loader.discover(os.path.join(my_dir, 'tests'), pattern='test_*.py')
     return test_suite
@@ -54,6 +54,7 @@ def airflow_test_suite():
 class CleanCommand(Command):
     """
     Command to tidy up the project root.
+
     Registered as cmdclass in setup() so it can be called with ``python setup.py extra_clean``.
     """
 
@@ -94,7 +95,8 @@ class CompileAssets(Command):
 
 class ListExtras(Command):
     """
-    List all available extras
+    List all available extras.
+
     Registered as cmdclass in setup() so it can be called with ``python setup.py list_extras``.
     """
 
@@ -114,12 +116,12 @@ class ListExtras(Command):
 
 def git_version(version_: str) -> str:
     """
-    Return a version to identify the state of the underlying git repo. The version will
-    indicate whether the head of the current git-backed working directory is tied to a
-    release tag or not : it will indicate the former with a 'release:{version}' prefix
-    and the latter with a 'dev0' prefix. Following the prefix will be a sha of the current
-    branch head. Finally, a "dirty" suffix is appended to indicate that uncommitted
-    changes are present.
+    Return a version to identify the state of the underlying git repo.
+
+    The version will indicate whether the head of the current git-backed working directory is tied to a
+    release tag or not : it will indicate the former with a 'release:{version}' prefix and the latter with a
+    'dev0' prefix. Following the prefix will be a sha of the current branch head. Finally, a "dirty" suffix
+    is appended to indicate that uncommitted changes are present.
 
     :param str version_: Semver version
     :return: Found Airflow version in Git repo

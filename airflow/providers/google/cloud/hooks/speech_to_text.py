@@ -79,7 +79,7 @@ class CloudSpeechToTextHook(GoogleBaseHook):
         timeout: Optional[float] = None,
     ):
         """
-        Recognizes audio input
+        Recognizes audio input.
 
         :param config: information to the recognizer that specifies how to process the request.
             https://googleapis.github.io/google-cloud-python/latest/speech/gapic/v1/types.html#google.cloud.speech_v1.types.RecognitionConfig

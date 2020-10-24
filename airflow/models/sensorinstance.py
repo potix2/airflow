@@ -31,16 +31,16 @@ from airflow.utils.state import State
 
 class SensorInstance(Base):
     """
-    SensorInstance support the smart sensor service. It stores the sensor task states
-    and context that required for poking include poke context and execution context.
-    In sensor_instance table we also save the sensor operator classpath so that inside
-    smart sensor there is no need to import the dagbag and create task object for each
-    sensor task.
+    SensorInstance support the smart sensor service.
 
-    SensorInstance include another set of columns to support the smart sensor shard on
-    large number of sensor instance. The key idea is to generate the hash code from the
-    poke context and use it to map to a shorter shard code which can be used as an index.
-    Every smart sensor process takes care of tasks whose `shardcode` are in a certain range.
+    It stores the sensor task states and context that required for poking include poke context and execution
+    context. In sensor_instance table we also save the sensor operator classpath so that inside smart sensor
+    there is no need to import the dagbag and create task object for each sensor task.
+
+    SensorInstance include another set of columns to support the smart sensor shard on large number of
+    sensor instance. The key idea is to generate the hash code from the poke context and use it to map to a
+    shorter shard code which can be used as an index. Every smart sensor process takes care of tasks whose
+    `shardcode` are in a certain range.
 
     """
 
@@ -93,8 +93,9 @@ class SensorInstance(Base):
     @provide_session
     def register(cls, ti, poke_context, execution_context, session=None):
         """
-        Register task instance ti for a sensor in sensor_instance table. Persist the
-        context used for a sensor and set the sensor_instance table state to sensing.
+        Register task instance ti for a sensor in sensor_instance table.
+
+        Persist the context used for a sensor and set the sensor_instance table state to sensing.
 
         :param ti: The task instance for the sensor to be registered.
         :type: ti:
@@ -147,8 +148,8 @@ class SensorInstance(Base):
     @property
     def try_number(self):
         """
-        Return the try number that this task number will be when it is actually
-        run.
+        Return the try number that this task number will be when it is actually run.
+
         If the TI is currently running, this will match the column in the
         database, in all other cases this will be incremented.
         """

@@ -15,7 +15,7 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""Hook for Google Drive service"""
+"""Hook for Google Drive service."""
 from typing import Any, Optional, Sequence, Union
 
 from googleapiclient.discovery import Resource, build

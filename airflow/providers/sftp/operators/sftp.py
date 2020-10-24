@@ -27,7 +27,7 @@ from airflow.utils.decorators import apply_defaults
 
 
 class SFTPOperation:
-    """Operation that can be used with SFTP/"""
+    """Operation that can be used with SFTP."""
 
     PUT = 'put'
     GET = 'get'
@@ -161,7 +161,7 @@ class SFTPOperator(BaseOperator):
 
 def _make_intermediate_dirs(sftp_client, remote_directory) -> None:
     """
-    Create all the intermediate directories in a remote host
+    Create all the intermediate directories in a remote host.
 
     :param sftp_client: A Paramiko SFTP client.
     :param remote_directory: Absolute Path of the directory containing the file

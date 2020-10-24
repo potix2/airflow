@@ -54,7 +54,7 @@ class AwsRedshiftClusterSensor(BaseSensorOperator):
         return self.get_hook().cluster_status(self.cluster_identifier) == self.target_status
 
     def get_hook(self) -> RedshiftHook:
-        """Create and return a RedshiftHook"""
+        """Create and return a RedshiftHook."""
         if self.hook:
             return self.hook
 

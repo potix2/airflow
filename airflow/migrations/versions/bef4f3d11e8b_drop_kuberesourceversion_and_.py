@@ -16,7 +16,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""Drop KubeResourceVersion and KubeWorkerId
+"""Drop KubeResourceVersion and KubeWorkerId.
 
 Revision ID: bef4f3d11e8b
 Revises: e1a11ece99cc
@@ -39,13 +39,13 @@ WORKER_RESOURCEVERSION_TABLE = "kube_resource_version"
 
 
 def upgrade():
-    """Apply Drop KubeResourceVersion and KubeWorkerIdentifier tables"""
+    """Apply Drop KubeResourceVersion and KubeWorkerIdentifier tables."""
     op.drop_table(WORKER_UUID_TABLE)
     op.drop_table(WORKER_RESOURCEVERSION_TABLE)
 
 
 def downgrade():
-    """Unapply Drop KubeResourceVersion and KubeWorkerIdentifier tables"""
+    """Unapply Drop KubeResourceVersion and KubeWorkerIdentifier tables."""
     _add_worker_uuid_table()
     _add_resource_table()
 

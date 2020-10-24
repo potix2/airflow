@@ -23,10 +23,10 @@ from airflow.models.errors import ImportError  # pylint: disable=redefined-built
 
 
 class ImportErrorSchema(SQLAlchemySchema):
-    """Import error schema"""
+    """Import error schema."""
 
     class Meta:
-        """Meta"""
+        """Meta."""
 
         model = ImportError
 
@@ -39,14 +39,14 @@ class ImportErrorSchema(SQLAlchemySchema):
 
 
 class ImportErrorCollection(NamedTuple):
-    """List of import errors with metadata"""
+    """List of import errors with metadata."""
 
     import_errors: List[ImportError]
     total_entries: int
 
 
 class ImportErrorCollectionSchema(Schema):
-    """Import error collection schema"""
+    """Import error collection schema."""
 
     import_errors = fields.List(fields.Nested(ImportErrorSchema))
     total_entries = fields.Int()

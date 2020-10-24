@@ -16,7 +16,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""This module contains AWS Athena hook"""
+"""This module contains AWS Athena hook."""
 from time import sleep
 from typing import Any, Dict, Optional
 
@@ -27,7 +27,7 @@ from airflow.providers.amazon.aws.hooks.base_aws import AwsBaseHook
 
 class AWSAthenaHook(AwsBaseHook):
     """
-    Interact with AWS Athena to run, poll queries and return query results
+    Interact with AWS Athena to run, poll queries and return query results.
 
     Additional arguments (such as ``aws_conn_id``) may be specified and
     are passed down to the underlying AwsBaseHook.
@@ -62,7 +62,7 @@ class AWSAthenaHook(AwsBaseHook):
         workgroup: str = 'primary',
     ) -> str:
         """
-        Run Presto query on athena with provided config and return submitted query_execution_id
+        Run Presto query on athena with provided config and return submitted query_execution_id.
 
         :param query: Presto query to run
         :type query: str
@@ -130,8 +130,9 @@ class AWSAthenaHook(AwsBaseHook):
         self, query_execution_id: str, next_token_id: Optional[str] = None, max_results: int = 1000
     ) -> Optional[dict]:
         """
-        Fetch submitted athena query results. returns none if query is in intermediate state or
-        failed/cancelled state else dict of query output
+        Fetch submitted athena query results.
+
+        Returns None if query is in intermediate state or failed/cancelled state else dict of query output.
 
         :param query_execution_id: Id of submitted athena query
         :type query_execution_id: str
@@ -161,9 +162,11 @@ class AWSAthenaHook(AwsBaseHook):
         starting_token: Optional[str] = None,
     ) -> Optional[PageIterator]:
         """
-        Fetch submitted athena query results. returns none if query is in intermediate state or
-        failed/cancelled state else a paginator to iterate through pages of results. If you
-        wish to get all results at once, call build_full_result() on the returned PageIterator
+        Fetch submitted athena query results.
+
+        Returns none if query is in intermediate state or failed/cancelled state else a paginator to iterate
+        through pages of results. If you wish to get all results at once, call build_full_result() on the
+        returned PageIterator.
 
         :param query_execution_id: Id of submitted athena query
         :type query_execution_id: str
@@ -229,7 +232,7 @@ class AWSAthenaHook(AwsBaseHook):
 
     def stop_query(self, query_execution_id: str) -> Dict:
         """
-        Cancel the submitted athena query
+        Cancel the submitted athena query.
 
         :param query_execution_id: Id of submitted athena query
         :type query_execution_id: str

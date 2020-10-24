@@ -16,7 +16,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""This module contains AWS CloudFormation Hook"""
+"""This module contains AWS CloudFormation Hook."""
 from typing import Optional, Union
 
 from boto3 import client, resource

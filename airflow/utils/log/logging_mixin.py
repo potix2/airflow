@@ -27,14 +27,15 @@ ANSI_ESCAPE = re.compile(r'\x1B[@-_][0-?]*[ -/]*[@-~]')
 
 def remove_escape_codes(text: str) -> str:
     """
-    Remove ANSI escapes codes from string. It's used to remove
-    "colors" from log messages.
+    Remove ANSI escapes codes from string.
+
+    It's used to remove "colors" from log messages.
     """
     return ANSI_ESCAPE.sub("", text)
 
 
 class LoggingMixin:
-    """Convenience super-class to have a logger configured with the class name"""
+    """Convenience super-class to have a logger configured with the class name."""
 
     def __init__(self, context=None):
         self._set_context(context)
@@ -59,7 +60,7 @@ class ExternalLoggingMixin:
 
     @abc.abstractproperty
     def log_name(self) -> str:
-        """Return log name"""
+        """Return log name."""
 
     @abc.abstractmethod
     def get_external_log_url(self, task_instance, try_number) -> str:
@@ -68,13 +69,18 @@ class ExternalLoggingMixin:
 
 # TODO: Formally inherit from io.IOBase
 class StreamLogWriter:
-    """Allows to redirect stdout and stderr to logger"""
+    """Allow to redirect stdout and stderr to logger."""
 
     encoding: None = None
 
     def __init__(self, logger, level):
         """
-        :param log: The log level method to write to, ie. log.debug, log.warning
+        Instantiate an object from StreamLogWriter.
+
+        :param logger: logger instance
+        :type logger: Logger
+        :param level: severity level ie. log.debug, log.warning
+        :type level: int
         :return:
         """
         self.logger = logger
@@ -91,8 +97,9 @@ class StreamLogWriter:
     @property
     def closed(self):  # noqa: D402
         """
-        Returns False to indicate that the stream is not closed (as it will be
-        open for the duration of Airflow's lifecycle).
+        Return False to indicate that the stream is not closed.
+
+        As it will be open for the duration of Airflow's lifecycle.
 
         For compatibility with the io.IOBase interface.
         """
@@ -104,7 +111,7 @@ class StreamLogWriter:
 
     def write(self, message):
         """
-        Do whatever it takes to actually log the specified logging record
+        Do whatever it takes to actually log the specified logging record.
 
         :param message: message to log
         """
@@ -116,7 +123,7 @@ class StreamLogWriter:
             self._buffer = ''
 
     def flush(self):
-        """Ensure all logging output has been flushed"""
+        """Ensure all logging output has been flushed."""
         if len(self._buffer) > 0:
             self._propagate_log(self._buffer)
             self._buffer = ''
@@ -131,8 +138,9 @@ class StreamLogWriter:
 
 class RedirectStdHandler(StreamHandler):
     """
-    This class is like a StreamHandler using sys.stderr/stdout, but always uses
-    whatever sys.stderr/stderr is currently set to rather than the value of
+    This class is like a StreamHandler using sys.stderr/stdout.
+
+    But always uses whatever sys.stderr/stderr is currently set to rather than the value of
     sys.stderr/stdout at handler construction time.
     """
 
@@ -161,7 +169,7 @@ class RedirectStdHandler(StreamHandler):
 
 def set_context(logger, value):
     """
-    Walks the tree of loggers and tries to set the context for each handler
+    Walk the tree of loggers and tries to set the context for each handler.
 
     :param logger: logger
     :param value: value to set

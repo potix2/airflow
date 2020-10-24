@@ -15,7 +15,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""add max tries column to task instance
+"""add max tries column to task instance.
 
 Revision ID: cc1e65623dc7
 Revises: 127d2bf2dfa7

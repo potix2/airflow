@@ -16,7 +16,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""Make TaskInstance.pool not nullable
+"""Make TaskInstance.pool not nullable.
 
 Revision ID: 6e96a59344a4
 Revises: 939bb1e647c8
@@ -44,7 +44,7 @@ Base = declarative_base()
 ID_LEN = 250
 
 
-class TaskInstance(Base):  # type: ignore
+class TaskInstance(Base):  # noqa: D400 type: ignore
     """
     Task instances store the state of a task instance. This table is the
     authority and single source of truth around what tasks have run and the

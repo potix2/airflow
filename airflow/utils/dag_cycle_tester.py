@@ -14,7 +14,7 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""DAG Cycle tester"""
+"""DAG Cycle tester."""
 from collections import defaultdict, deque
 
 from airflow.exceptions import AirflowDagCycleException
@@ -26,8 +26,9 @@ CYCLE_DONE = 2
 
 def test_cycle(dag):
     """
-    Check to see if there are any cycles in the DAG. Returns False if no cycle found,
-    otherwise raises exception.
+    Check to see if there are any cycles in the DAG.
+
+    Returns False if no cycle found, otherwise raises exception.
     """
     # default of int is 0 which corresponds to CYCLE_NEW
     visited = defaultdict(int)

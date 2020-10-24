@@ -149,8 +149,7 @@ class AirflowPlugin:
 
 def is_valid_plugin(plugin_obj):
     """
-    Check whether a potential object is a subclass of
-    the AirflowPlugin class.
+    Check whether a potential object is a subclass of the AirflowPlugin class.
 
     :param plugin_obj: potential subclass of AirflowPlugin
     :return: Whether or not the obj is a valid subclass of
@@ -196,7 +195,7 @@ def load_entrypoint_plugins():
 
 
 def load_plugins_from_plugin_directory():
-    """Load and register Airflow Plugins from plugins directory"""
+    """Load and register Airflow Plugins from plugins directory."""
     global import_errors  # pylint: disable=global-statement
     global plugins  # pylint: disable=global-statement
     log.debug("Loading plugins from directory: %s", settings.PLUGINS_FOLDER)
@@ -275,7 +274,7 @@ def ensure_plugins_loaded():
 
 
 def initialize_web_ui_plugins():
-    """Collect extension points for WEB UI"""
+    """Collect extension points for WEB UI."""
     # pylint: disable=global-statement
     global plugins
     global flask_blueprints
@@ -317,7 +316,7 @@ def initialize_web_ui_plugins():
 
 
 def initialize_extra_operators_links_plugins():
-    """Creates modules for loaded extension from extra operators links plugins"""
+    """Creates modules for loaded extension from extra operators links plugins."""
     # pylint: disable=global-statement
     global global_operator_extra_links
     global operator_extra_links

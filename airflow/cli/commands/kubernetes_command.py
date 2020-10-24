@@ -14,7 +14,7 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""Kubernetes sub-commands"""
+"""Kubernetes sub-commands."""
 import os
 import sys
 
@@ -35,7 +35,7 @@ from airflow.utils.cli import get_dag
 
 @cli_utils.action_logging
 def generate_pod_yaml(args):
-    """Generates yaml files for each task in the DAG. Used for testing output of KubernetesExecutor"""
+    """Generate yaml files for each task in the DAG. Used for testing output of KubernetesExecutor."""
     execution_date = args.execution_date
     dag = get_dag(subdir=args.subdir, dag_id=args.dag_id)
     yaml_output_path = args.output_path

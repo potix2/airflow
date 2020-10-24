@@ -15,7 +15,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""fix mysql not null constraint
+"""fix mysql not null constraint.
 
 Revision ID: f23433877c24
 Revises: 05f30312d566

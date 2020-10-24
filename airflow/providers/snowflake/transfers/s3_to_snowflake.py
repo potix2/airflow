@@ -26,7 +26,7 @@ from airflow.utils.decorators import apply_defaults
 
 class S3ToSnowflakeOperator(BaseOperator):
     """
-    Executes an COPY command to load files from s3 to Snowflake
+    Execute an COPY command to load files from s3 to Snowflake.
 
     :param s3_keys: reference to a list of S3 keys
     :type s3_keys: list

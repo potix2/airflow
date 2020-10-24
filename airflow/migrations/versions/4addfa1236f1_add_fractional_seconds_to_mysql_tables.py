@@ -16,7 +16,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""Add fractional seconds to mysql tables
+"""Add fractional seconds to mysql tables.
 
 Revision ID: 4addfa1236f1
 Revises: f2ca10b85618

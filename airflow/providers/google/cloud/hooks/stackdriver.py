@@ -32,7 +32,7 @@ from airflow.providers.google.common.hooks.base_google import GoogleBaseHook
 
 
 class StackdriverHook(GoogleBaseHook):
-    """Stackdriver Hook for connecting with Google Cloud Stackdriver"""
+    """Stackdriver Hook for connecting with Google Cloud Stackdriver."""
 
     def __init__(
         self,
@@ -71,8 +71,9 @@ class StackdriverHook(GoogleBaseHook):
         metadata: Optional[str] = None,
     ) -> Any:
         """
-        Fetches all the Alert Policies identified by the filter passed as
-        filter parameter. The desired return type can be specified by the
+        Fetches all the Alert Policies identified by the filter passed as filter parameter.
+
+        The desired return type can be specified by the
         format parameter, the supported formats are "dict", "json" and None
         which returns python dictionary, stringified JSON and protobuf
         respectively.
@@ -156,8 +157,9 @@ class StackdriverHook(GoogleBaseHook):
         metadata: Optional[str] = None,
     ) -> None:
         """
-        Enables one or more disabled alerting policies identified by filter
-        parameter. Inoperative in case the policy is already enabled.
+        Enables one or more disabled alerting policies identified by filter parameter.
+
+        Inoperative in case the policy is already enabled.
 
         :param project_id: The project in which alert needs to be enabled.
         :type project_id: str
@@ -194,8 +196,9 @@ class StackdriverHook(GoogleBaseHook):
         metadata: Optional[str] = None,
     ) -> None:
         """
-        Disables one or more enabled alerting policies identified by filter
-        parameter. Inoperative in case the policy is already disabled.
+        Disables one or more enabled alerting policies identified by filter parameter.
+
+        Inoperative in case the policy is already disabled.
 
         :param project_id: The project in which alert needs to be disabled.
         :type project_id: str
@@ -230,10 +233,9 @@ class StackdriverHook(GoogleBaseHook):
         retry: Optional[str] = DEFAULT,
         timeout: Optional[float] = DEFAULT,
         metadata: Optional[str] = None,
-    ) -> None:
+    ) -> None:  # noqa: D400
         """
-         Creates a new alert or updates an existing policy identified
-         the name field in the alerts parameter.
+        Creates a new alert or updates an existing policy identified the name field in the alerts parameter.
 
         :param project_id: The project in which alert needs to be created/updated.
         :type project_id: str
@@ -364,7 +366,7 @@ class StackdriverHook(GoogleBaseHook):
         retry: Optional[str] = DEFAULT,
         timeout: Optional[str] = DEFAULT,
         metadata: Optional[str] = None,
-    ) -> Any:
+    ) -> Any:  # noqa: D400
         """
         Fetches all the Notification Channels identified by the filter passed as
         filter parameter. The desired return type can be specified by the
@@ -453,7 +455,7 @@ class StackdriverHook(GoogleBaseHook):
         retry: Optional[str] = DEFAULT,
         timeout: Optional[str] = DEFAULT,
         metadata: Optional[str] = None,
-    ) -> None:
+    ) -> None:  # noqa: D400
         """
         Enables one or more disabled alerting policies identified by filter
         parameter. Inoperative in case the policy is already enabled.
@@ -491,7 +493,7 @@ class StackdriverHook(GoogleBaseHook):
         retry: Optional[str] = DEFAULT,
         timeout: Optional[str] = DEFAULT,
         metadata: Optional[str] = None,
-    ) -> None:
+    ) -> None:  # noqa: D400
         """
         Disables one or more enabled notification channels identified by filter
         parameter. Inoperative in case the policy is already disabled.
@@ -529,7 +531,7 @@ class StackdriverHook(GoogleBaseHook):
         retry: Optional[str] = DEFAULT,
         timeout: Optional[float] = DEFAULT,
         metadata: Optional[str] = None,
-    ) -> dict:
+    ) -> dict:  # noqa: D400
         """
         Creates a new notification or updates an existing notification channel
         identified the name field in the alerts parameter.

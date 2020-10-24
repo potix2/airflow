@@ -18,7 +18,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""Remove Transform Mark for Sphinx"""
+"""Remove Transform Mark for Sphinx."""
 import re
 
 from docutils import nodes
@@ -50,7 +50,7 @@ class TrimDocMarkerFlagsTransform(SphinxTransform):
 
     @staticmethod
     def is_pycode(node: nodes.literal_block) -> bool:
-        """Checks if the node is literal block of python"""
+        """Check if the node is literal block of python."""
         if node.rawsource != node.astext():
             return False  # skip parsed-literal node
 
@@ -68,7 +68,7 @@ class TrimDocMarkerFlagsTransform(SphinxTransform):
 
 
 def setup(app):
-    """Sets the transform up"""
+    """Set the transform up."""
     app.add_post_transform(TrimDocMarkerFlagsTransform)
 
     return {"version": "builtin", "parallel_read_safe": False, "parallel_write_safe": False}

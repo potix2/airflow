@@ -25,7 +25,7 @@ from airflow.models.serialized_dag import SerializedDagModel  # pylint: disable=
 
 
 def include_object(_, name, type_, *args):
-    """Filter objects for autogenerating revisions"""
+    """Filter objects for autogenerating revisions."""
     # Ignore _anything_ to do with Flask AppBuilder's tables
     if type_ == "table" and name.startswith("ab_"):
         return False

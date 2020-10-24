@@ -14,7 +14,7 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""Client for kubernetes communication"""
+"""Client for kubernetes communication."""
 from typing import Optional
 
 from airflow.configuration import conf
@@ -69,9 +69,10 @@ except ImportError as e:
 
 def _enable_tcp_keepalive() -> None:
     """
-    This function enables TCP keepalive mechanism. This prevents urllib3 connection
-    to hang indefinitely when idle connection is time-outed on services like cloud
-    load balancers or firewalls.
+    This function enables TCP keepalive mechanism.
+
+    This prevents urllib3 connection to hang indefinitely when idle connection is time-outed on services
+    like cloud load balancers or firewalls.
 
     See https://github.com/apache/airflow/pull/11406 for detailed explanation.
     Please ping @michalmisiewicz or @dimberman in the PR if you want to modify this function.
@@ -100,7 +101,7 @@ def get_kube_client(
     config_file: Optional[str] = None,
 ) -> client.CoreV1Api:
     """
-    Retrieves Kubernetes client
+    Retrieve Kubernetes client.
 
     :param in_cluster: whether we are in cluster
     :type in_cluster: bool

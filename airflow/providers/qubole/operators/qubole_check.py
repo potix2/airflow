@@ -28,8 +28,9 @@ from airflow.utils.decorators import apply_defaults
 
 class QuboleCheckOperator(CheckOperator, QuboleOperator):
     """
-    Performs checks against Qubole Commands. ``QuboleCheckOperator`` expects
-    a command that will be executed on QDS.
+    Perform checks against Qubole Commands.
+
+    ``QuboleCheckOperator`` expects a command that will be executed on QDS.
     By default, each value on first row of the result of this Qubole Command
     is evaluated using python ``bool`` casting. If any of the
     values return ``False``, the check is failed and errors out.
@@ -215,7 +216,7 @@ class QuboleValueCheckOperator(ValueCheckOperator, QuboleOperator):
 
 
 def get_sql_from_qbol_cmd(params) -> str:
-    """Get Qubole sql from Qubole command"""
+    """Get Qubole sql from Qubole command."""
     sql = ''
     if 'query' in params:
         sql = params['query']
@@ -225,7 +226,7 @@ def get_sql_from_qbol_cmd(params) -> str:
 
 
 def handle_airflow_exception(airflow_exception, hook):
-    """Qubole check handle Airflow exception"""
+    """Qubole check handle Airflow exception."""
     cmd = hook.cmd
     if cmd is not None:
         if cmd.is_success(cmd.status):

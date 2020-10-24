@@ -120,7 +120,7 @@ class HiveOperator(BaseOperator):
         self.hook: Optional[HiveCliHook] = None
 
     def get_hook(self) -> HiveCliHook:
-        """Get Hive cli hook"""
+        """Get Hive cli hook."""
         return HiveCliHook(
             hive_cli_conn_id=self.hive_cli_conn_id,
             run_as=self.run_as,

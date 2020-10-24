@@ -73,7 +73,7 @@ class LocalTaskJob(BaseJob):
 
         # pylint: disable=unused-argument
         def signal_handler(signum, frame):
-            """Setting kill signal handler"""
+            """Setting kill signal handler."""
             self.log.error("Received SIGTERM. Terminating subprocesses")
             self.on_kill()
             raise AirflowException("LocalTaskJob received SIGTERM signal")
@@ -140,7 +140,7 @@ class LocalTaskJob(BaseJob):
 
     @provide_session
     def heartbeat_callback(self, session=None):
-        """Self destruct task if state has been moved away from running externally"""
+        """Self destruct task if state has been moved away from running externally."""
         if self.terminating:
             # ensure termination if processes are created later
             self.task_runner.terminate()

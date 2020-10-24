@@ -51,7 +51,7 @@ def is_naive(value):
 
 def utcnow() -> dt.datetime:
     """
-    Get the current date and time in UTC
+    Get the current date and time in UTC.
 
     :return:
     """
@@ -66,7 +66,7 @@ def utcnow() -> dt.datetime:
 
 def utc_epoch() -> dt.datetime:
     """
-    Gets the epoch in the users timezone
+    Gets the epoch in the users timezone.
 
     :return:
     """
@@ -81,8 +81,7 @@ def utc_epoch() -> dt.datetime:
 
 def convert_to_utc(value):
     """
-    Returns the datetime with the default timezone added if timezone
-    information was not associated
+    Returns the datetime with the default timezone added if timezone information was not associated.
 
     :param value: datetime
     :return: datetime with tzinfo
@@ -154,7 +153,7 @@ def make_naive(value, timezone=None):
 
 def datetime(*args, **kwargs):
     """
-    Wrapper around datetime.datetime that adds settings.TIMEZONE if tzinfo not specified
+    Wrapper around datetime.datetime that adds settings.TIMEZONE if tzinfo not specified.
 
     :return: datetime.datetime
     """
@@ -166,7 +165,7 @@ def datetime(*args, **kwargs):
 
 def parse(string: str, timezone=None) -> DateTime:
     """
-    Parse a time string and return an aware datetime
+    Parse a time string and return an aware datetime.
 
     :param string: time string
     """

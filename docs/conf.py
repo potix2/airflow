@@ -30,7 +30,7 @@
 #
 # All configuration values have a default; values that are commented out
 # serve to show the default.
-"""Configuration of Airflow Docs"""
+"""Configuration of Airflow Docs."""
 import os
 import sys
 from glob import glob

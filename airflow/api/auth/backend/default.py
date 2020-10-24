@@ -32,7 +32,7 @@ T = TypeVar("T", bound=Callable)  # pylint: disable=invalid-name
 
 
 def requires_authentication(function: T):
-    """Decorator for functions that require authentication"""
+    """Decorator for functions that require authentication."""
 
     @wraps(function)
     def decorated(*args, **kwargs):

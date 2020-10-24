@@ -236,9 +236,7 @@ class BaseSQLToGCSOperator(BaseOperator):
         return files_to_upload
 
     def _configure_csv_file(self, file_handle, schema):
-        """Configure a csv writer with the file_handle and write schema
-        as headers for the new file.
-        """
+        """Configure a csv writer with the file_handle and write schema as headers for the new file."""
         csv_writer = csv.writer(file_handle, encoding='utf-8', delimiter=self.field_delimiter)
         csv_writer.writerow(schema)
         return csv_writer
@@ -278,9 +276,9 @@ class BaseSQLToGCSOperator(BaseOperator):
 
     def _write_local_schema_file(self, cursor):
         """
-        Takes a cursor, and writes the BigQuery schema for the results to a
-        local file system. Schema for database will be read from cursor if
-        not specified.
+        Takes a cursor, and writes the BigQuery schema for the results to a local file system.
+
+        Schema for database will be read from cursor if not specified.
 
         :return: A dictionary where key is a filename to be used as an object
             name in GCS, and values are file handles to local files that
@@ -309,10 +307,7 @@ class BaseSQLToGCSOperator(BaseOperator):
         return schema_file_to_upload
 
     def _upload_to_gcs(self, files_to_upload):
-        """
-        Upload all of the file splits (and optionally the schema .json file) to
-        Google Cloud Storage.
-        """
+        """Upload all of the file splits (and optionally the schema .json file) to Google Cloud Storage."""
         hook = GCSHook(
             gcp_conn_id=self.gcp_conn_id,
             delegate_to=self.delegate_to,

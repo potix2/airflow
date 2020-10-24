@@ -26,7 +26,7 @@ from airflow.utils.decorators import apply_defaults
 
 class RedshiftToS3Operator(BaseOperator):
     """
-    Executes an UNLOAD command to s3 as a CSV with headers
+    Execute an UNLOAD command to s3 as a CSV with headers.
 
     :param schema: reference to a specific schema in redshift database
     :type schema: str

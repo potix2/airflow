@@ -16,7 +16,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""add task fails journal table
+"""add task fails journal table.
 
 Revision ID: 64de9cddf6c9
 Revises: 211e584da130

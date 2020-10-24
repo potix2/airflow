@@ -32,7 +32,7 @@ from airflow.utils.decorators import apply_defaults
 
 class CloudTextToSpeechSynthesizeOperator(BaseOperator):
     """
-    Synthesizes text to speech and stores it in Google Cloud Storage
+    Synthesizes text to speech and stores it in Google Cloud Storage.
 
     .. seealso::
         For more information on how to use this operator, take a look at the guide:

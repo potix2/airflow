@@ -15,7 +15,7 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""Hook for Web HDFS"""
+"""Hook for Web HDFS."""
 import logging
 import socket
 from typing import Any, Optional
@@ -39,7 +39,7 @@ if _kerberos_security_mode:
 
 
 class AirflowWebHDFSHookException(AirflowException):
-    """Exception specific for WebHDFS hook"""
+    """Exception specific for WebHDFS hook."""
 
 
 class WebHDFSHook(BaseHook):

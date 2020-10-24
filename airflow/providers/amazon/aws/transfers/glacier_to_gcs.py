@@ -26,7 +26,7 @@ from airflow.utils.decorators import apply_defaults
 
 class GlacierToGCSOperator(BaseOperator):
     """
-    Transfers data from Amazon Glacier to Google Cloud Storage
+    Transfers data from Amazon Glacier to Google Cloud Storage.
 
     .. note::
         Please be warn that GlacierToGCSOperator may depends on memory usage.

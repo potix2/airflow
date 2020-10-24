@@ -14,7 +14,7 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""Database sub-commands"""
+"""Database sub-commands."""
 import os
 import textwrap
 from tempfile import NamedTemporaryFile
@@ -26,14 +26,14 @@ from airflow.utils.process_utils import execute_interactive
 
 
 def initdb(args):
-    """Initializes the metadata database"""
+    """Initializes the metadata database."""
     print("DB: " + repr(settings.engine.url))
     db.initdb()
     print("Done.")
 
 
 def resetdb(args):
-    """Resets the metadata database"""
+    """Resets the metadata database."""
     print("DB: " + repr(settings.engine.url))
     if args.yes or input("This will drop existing tables if they exist. Proceed? (y/n)").upper() == "Y":
         db.resetdb()
@@ -43,19 +43,19 @@ def resetdb(args):
 
 @cli_utils.action_logging
 def upgradedb(args):
-    """Upgrades the metadata database"""
+    """Upgrades the metadata database."""
     print("DB: " + repr(settings.engine.url))
     db.upgradedb()
 
 
 def check_migrations(args):
-    """Function to wait for all airflow migrations to complete. Used for launching airflow in k8s"""
+    """Function to wait for all airflow migrations to complete. Used for launching airflow in k8s."""
     db.check_migrations(timeout=args.migration_wait_timeout)
 
 
 @cli_utils.action_logging
 def shell(args):
-    """Run a shell that allows to access metadata database"""
+    """Run a shell that allows to access metadata database."""
     url = settings.engine.url
     print("DB: " + repr(url))
 

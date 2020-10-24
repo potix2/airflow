@@ -24,7 +24,7 @@ from airflow.utils.decorators import apply_defaults
 
 class PostgresOperator(BaseOperator):
     """
-    Executes sql code in a specific Postgres database
+    Execute sql code in a specific Postgres database.
 
     :param sql: the sql code to be executed. (templated)
     :type sql: Can receive a str representing a sql statement,

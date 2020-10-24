@@ -15,10 +15,7 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""
-This module contains a mechanism for providing temporary
-Google Cloud authentication.
-"""
+"""This module contains a mechanism for providing temporary Google Cloud authentication."""
 import json
 import logging
 import tempfile
@@ -48,8 +45,9 @@ def build_gcp_conn(
     project_id: Optional[str] = None,
 ) -> str:
     """
-    Builds a uri that can be used as :envvar:`AIRFLOW_CONN_{CONN_ID}` with provided service key,
-    scopes and project id.
+    Builds a uri that can be used as :envvar:`AIRFLOW_CONN_{CONN_ID}`.
+
+    It has the provided service key, scopes and project id.
 
     :param key_file_path: Path to service key.
     :type key_file_path: Optional[str]
@@ -78,7 +76,9 @@ def build_gcp_conn(
 @contextmanager
 def provide_gcp_credentials(key_file_path: Optional[str] = None, key_file_dict: Optional[Dict] = None):
     """
-    Context manager that provides a Google Cloud credentials for application supporting `Application
+    Context manager that provides an `Application Default Credentials`.
+
+    It provides a Google Cloud credentials for application supporting `Application
     Default Credentials (ADC) strategy <https://cloud.google.com/docs/authentication/production>`__.
 
     It can be used to provide credentials for external programs (e.g. gcloud) that expect authorization
@@ -115,9 +115,9 @@ def provide_gcp_connection(
     project_id: Optional[str] = None,
 ) -> Generator:
     """
-    Context manager that provides a temporary value of :envvar:`AIRFLOW_CONN_GOOGLE_CLOUD_DEFAULT`
-    connection. It build a new connection that includes path to provided service json,
-    required scopes and project id.
+    Context manager that provides a temporary value of :envvar:`AIRFLOW_CONN_GOOGLE_CLOUD_DEFAULT` connection.
+
+    It build a new connection that includes path to provided service json, required scopes and project id.
 
     :param key_file_path: Path to file with Google Cloud Service Account .json file.
     :type key_file_path: str
@@ -142,7 +142,7 @@ def provide_gcp_conn_and_credentials(
     project_id: Optional[str] = None,
 ) -> Generator:
     """
-    Context manager that provides both:
+    Context manager that provides both `Application Default Credentials` and temporary value.
 
     - Google Cloud credentials for application supporting `Application Default Credentials (ADC)
       strategy <https://cloud.google.com/docs/authentication/production>`__.
@@ -173,7 +173,7 @@ def provide_gcp_conn_and_credentials(
 
 class _CredentialProvider(LoggingMixin):
     """
-    Prepare the Credentials object for Google API and the associated project_id
+    Prepare the Credentials object for Google API and the associated project_id.
 
     Only either `key_path` or `keyfile_dict` should be provided, or an exception will
     occur. If neither of them are provided, return default credentials for the current environment
@@ -326,9 +326,10 @@ def _get_target_principal_and_delegates(
     impersonation_chain: Optional[Union[str, Sequence[str]]] = None
 ) -> Tuple[Optional[str], Optional[Sequence[str]]]:
     """
-    Analyze contents of impersonation_chain and return target_principal (the service account
-    to directly impersonate using short-term credentials, if any) and optional list of delegates
-    required to get the access_token of target_principal.
+    Analyze contents of impersonation_chain and return target_principal.
+
+    The service account to directly impersonate using short-term credentials, if any. And optional list of
+    delegates required to get the access_token of target_principal.
 
     :param impersonation_chain: the service account to impersonate or a chained list leading to this
         account

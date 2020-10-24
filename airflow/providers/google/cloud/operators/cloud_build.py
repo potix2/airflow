@@ -89,7 +89,7 @@ class BuildProcessor:
 
     def process_body(self) -> dict:
         """
-        Processes the body passed in the constructor
+        Processes the body passed in the constructor.
 
         :return: the body.
         :type: dict
@@ -102,7 +102,7 @@ class BuildProcessor:
     @staticmethod
     def _convert_repo_url_to_dict(source):
         """
-        Convert url to repository in Google Cloud Source to a format supported by the API
+        Convert url to repository in Google Cloud Source to a format supported by the API.
 
         Example valid input:
 
@@ -134,7 +134,7 @@ class BuildProcessor:
     @staticmethod
     def _convert_storage_url_to_dict(storage_url: str) -> Dict[str, Any]:
         """
-        Convert url to object in Google Cloud Storage to a format supported by the API
+        Convert url to object in Google Cloud Storage to a format supported by the API.
 
         Example valid input:
 

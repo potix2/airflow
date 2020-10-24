@@ -41,7 +41,7 @@ class SambaHook(BaseHook):
         return samba
 
     def push_from_local(self, destination_filepath: str, local_filepath: str) -> None:
-        """Push local file to samba server"""
+        """Push local file to samba server."""
         samba = self.get_conn()
         if samba.exists(destination_filepath):
             if samba.isfile(destination_filepath):

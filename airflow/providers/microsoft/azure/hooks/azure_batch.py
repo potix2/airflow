@@ -31,7 +31,7 @@ from airflow.utils import timezone
 
 class AzureBatchHook(BaseHook):
     """
-    Hook for Azure Batch APIs
+    Hook for Azure Batch APIs.
 
     Account name and account key should be in login and password parameters.
     The account url should be in extra parameter as account_url
@@ -44,20 +44,20 @@ class AzureBatchHook(BaseHook):
         self.extra = self._connection().extra_dejson
 
     def _connection(self) -> Connection:
-        """Get connected to azure batch service"""
+        """Get connected to azure batch service."""
         conn = self.get_connection(self.conn_id)
         return conn
 
     def get_conn(self):
         """
-        Get the batch client connection
+        Get the batch client connection.
 
         :return: Azure batch client
         """
         conn = self._connection()
 
         def _get_required_param(name):
-            """Extract required parameter from extra JSON, raise exception if not found"""
+            """Extract required parameter from extra JSON, raise exception if not found."""
             value = conn.extra_dejson.get(name)
             if not value:
                 raise AirflowException(f'Extra connection option is missing required parameter: `{name}`')
@@ -86,7 +86,7 @@ class AzureBatchHook(BaseHook):
         **kwargs,
     ) -> PoolAddParameter:
         """
-        Configures a pool
+        Configure a pool.
 
         :param pool_id: A string that uniquely identifies the Pool within the Account
         :type pool_id: str
@@ -183,7 +183,7 @@ class AzureBatchHook(BaseHook):
 
     def create_pool(self, pool: PoolAddParameter) -> None:
         """
-        Creates a pool if not already existing
+        Create a pool if not already existing.
 
         :param pool: the pool object to create
         :type pool: batch_models.PoolAddParameter
@@ -206,7 +206,7 @@ class AzureBatchHook(BaseHook):
         sku_starts_with: Optional[str] = None,
     ) -> tuple:
         """
-        Get latest verified image vm and sku
+        Get latest verified image vm and sku.
 
         :param publisher: The publisher of the Azure Virtual Machines Marketplace Image.
             For example, Canonical or MicrosoftWindowsServer.
@@ -234,7 +234,7 @@ class AzureBatchHook(BaseHook):
 
     def wait_for_all_node_state(self, pool_id: str, node_state: Set) -> list:
         """
-        Wait for all nodes in a pool to reach given states
+        Wait for all nodes in a pool to reach given states.
 
         :param pool_id: A string that identifies the pool
         :type pool_id: str
@@ -264,7 +264,7 @@ class AzureBatchHook(BaseHook):
         **kwargs,
     ) -> JobAddParameter:
         """
-        Configures a job for use in the pool
+        Configure a job for use in the pool.
 
         :param job_id: A string that uniquely identifies the job within the account
         :type job_id: str
@@ -283,7 +283,7 @@ class AzureBatchHook(BaseHook):
 
     def create_job(self, job: JobAddParameter) -> None:
         """
-        Creates a job in the pool
+        Create a job in the pool.
 
         :param job: The job object to create
         :type job: batch_models.JobAddParameter
@@ -306,7 +306,7 @@ class AzureBatchHook(BaseHook):
         **kwargs,
     ) -> TaskAddParameter:
         """
-        Creates a task
+        Create a task.
 
         :param task_id: A string that identifies the task to create
         :type task_id: str
@@ -332,7 +332,7 @@ class AzureBatchHook(BaseHook):
 
     def add_single_task_to_job(self, job_id: str, task: TaskAddParameter) -> None:
         """
-        Add a single task to given job if it doesn't exist
+        Add a single task to given job if it doesn't exist.
 
         :param job_id: A string that identifies the given job
         :type job_id: str
@@ -350,7 +350,7 @@ class AzureBatchHook(BaseHook):
 
     def wait_for_job_tasks_to_complete(self, job_id: str, timeout: int) -> None:
         """
-        Wait for tasks in a particular job to complete
+        Wait for tasks in a particular job to complete.
 
         :param job_id: A string that identifies the job
         :type job_id: str

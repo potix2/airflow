@@ -14,7 +14,7 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""Executes task in a Kubernetes POD"""
+"""Executes task in a Kubernetes POD."""
 import re
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
@@ -34,7 +34,7 @@ from airflow.version import version as airflow_version
 
 class KubernetesPodOperator(BaseOperator):  # pylint: disable=too-many-instance-attributes
     """
-    Execute a task in a Kubernetes Pod
+    Execute a task in a Kubernetes Pod.
 
     .. seealso::
         For more information on how to use this operator, take a look at the guide:
@@ -245,7 +245,7 @@ class KubernetesPodOperator(BaseOperator):  # pylint: disable=too-many-instance-
     @staticmethod
     def create_labels_for_pod(context) -> dict:
         """
-        Generate labels for the pod to track the pod in case of Operator crash
+        Generate labels for the pod to track the pod in case of Operator crash.
 
         :param context: task context provided by airflow DAG
         :return: dict
@@ -320,6 +320,7 @@ class KubernetesPodOperator(BaseOperator):  # pylint: disable=too-many-instance-
         self, labels: dict, try_numbers_match: bool, launcher: Any, pod: k8s.V1Pod
     ) -> Tuple[State, Optional[str]]:
         """
+        Monitor the existing pod or launch a new pod based on the `reattach_on_restart` parameter.
 
         In cases where the Scheduler restarts while a KubernetesPodOperator task is running,
         this function will either continue to monitor the existing pod or launch a new pod
@@ -367,9 +368,9 @@ class KubernetesPodOperator(BaseOperator):  # pylint: disable=too-many-instance-
 
     def create_pod_request_obj(self) -> k8s.V1Pod:
         """
-        Creates a V1Pod based on user parameters. Note that a `pod` or `pod_template_file`
-        will supersede all other values.
+        Create a V1Pod based on user parameters.
 
+        Note that a `pod` or `pod_template_file` will supersede all other values.
         """
         self.log.debug("Creating pod for K8sPodOperator task %s", self.task_id)
         if self.pod_template_file:
@@ -429,7 +430,7 @@ class KubernetesPodOperator(BaseOperator):  # pylint: disable=too-many-instance-
 
     def create_new_pod_for_operator(self, labels, launcher) -> Tuple[State, k8s.V1Pod, Optional[str]]:
         """
-        Creates a new pod and monitors for duration of task
+        Create a new pod and monitors for duration of task.
 
         :param labels: labels used to track pod
         :param launcher: pod launcher that will manage launching and monitoring pods
@@ -463,14 +464,14 @@ class KubernetesPodOperator(BaseOperator):  # pylint: disable=too-many-instance-
         return final_state, self.pod, result
 
     def patch_already_checked(self, pod: k8s.V1Pod):
-        """Add an "already tried annotation to ensure we only retry once"""
+        """Add an "already tried annotation to ensure we only retry once."""
         pod.metadata.labels["already_checked"] = "True"
         body = PodGenerator.serialize_pod(pod)
         self.client.patch_namespaced_pod(pod.metadata.name, pod.metadata.namespace, body)
 
     def monitor_launched_pod(self, launcher, pod) -> Tuple[State, Optional[str]]:
         """
-        Monitors a pod to completion that was created by a previous KubernetesPodOperator
+        Monitor a pod to completion that was created by a previous KubernetesPodOperator.
 
         :param launcher: pod launcher that will manage launching and monitoring pods
         :param pod: podspec used to find pod using k8s API

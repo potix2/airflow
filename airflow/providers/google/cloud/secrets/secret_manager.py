@@ -15,7 +15,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""Objects relating to sourcing connections from Google Cloud Secrets Manager"""
+"""Objects relating to sourcing connections from Google Cloud Secrets Manager."""
 from typing import Optional
 
 from cached_property import cached_property
@@ -31,7 +31,7 @@ SECRET_ID_PATTERN = r"^[a-zA-Z0-9-_]*$"
 
 class CloudSecretManagerBackend(BaseSecretsBackend, LoggingMixin):
     """
-    Retrieves Connection object from Google Cloud Secrets Manager
+    Retrieves Connection object from Google Cloud Secrets Manager.
 
     Configurable via ``airflow.cfg`` as follows:
 
@@ -125,7 +125,7 @@ class CloudSecretManagerBackend(BaseSecretsBackend, LoggingMixin):
 
     def get_variable(self, key: str) -> Optional[str]:
         """
-        Get Airflow Variable from Environment Variable
+        Get Airflow Variable from Environment Variable.
 
         :param key: Variable Key
         :return: Variable Value
@@ -134,7 +134,7 @@ class CloudSecretManagerBackend(BaseSecretsBackend, LoggingMixin):
 
     def get_config(self, key: str) -> Optional[str]:
         """
-        Get Airflow Configuration
+        Get Airflow Configuration.
 
         :param key: Configuration Option Key
         :return: Configuration Option Value

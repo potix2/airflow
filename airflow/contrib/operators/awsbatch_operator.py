@@ -17,8 +17,9 @@
 # under the License.
 #
 
-"""This module is deprecated. Please use:
+"""This module is deprecated.
 
+Please use:
 - `airflow.providers.amazon.aws.operators.batch`
 - `airflow.providers.amazon.aws.hooks.batch_client`
 - `airflow.providers.amazon.aws.hooks.batch_waiters``
@@ -41,7 +42,7 @@ warnings.warn(
 
 
 # pylint: disable=too-many-ancestors
-class AWSBatchOperator(AwsBatchOperator):
+class AWSBatchOperator(AwsBatchOperator):  # noqa: D400
     """
     This class is deprecated. Please use
     `airflow.providers.amazon.aws.operators.batch.AwsBatchOperator`.
@@ -58,7 +59,7 @@ class AWSBatchOperator(AwsBatchOperator):
 
 
 @runtime_checkable
-class BatchProtocol(AwsBatchProtocol, Protocol):
+class BatchProtocol(AwsBatchProtocol, Protocol):  # noqa: D400
     """
     This class is deprecated. Please use
     `airflow.providers.amazon.aws.hooks.batch_client.AwsBatchProtocol`.

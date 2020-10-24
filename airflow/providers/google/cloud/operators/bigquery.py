@@ -47,7 +47,7 @@ _DEPRECATION_MSG = (
 
 
 class BigQueryUIColors(enum.Enum):
-    """Hex colors for BigQuery operators"""
+    """Hex colors for BigQuery operators."""
 
     CHECK = "#C0D7FF"
     QUERY = "#A1BBFF"
@@ -89,10 +89,11 @@ class BigQueryConsoleIndexableLink(BaseOperatorLink):
 
 class BigQueryCheckOperator(CheckOperator):
     """
-    Performs checks against BigQuery. The ``BigQueryCheckOperator`` expects
-    a sql query that will return a single row. Each value on that
-    first row is evaluated using python ``bool`` casting. If any of the
-    values return ``False`` the check is failed and errors out.
+    Perform checks against BigQuery.
+
+    The ``BigQueryCheckOperator`` expects a sql query that will return a single row. Each value on that
+    first row is evaluated using python ``bool`` casting. If any of the values return ``False`` the check
+    is failed and errors out.
 
     .. seealso::
         For more information on how to use this operator, take a look at the guide:
@@ -260,8 +261,10 @@ class BigQueryValueCheckOperator(ValueCheckOperator):
 
 class BigQueryIntervalCheckOperator(IntervalCheckOperator):
     """
-    Checks that the values of metrics given as SQL expressions are within
-    a certain tolerance of the ones from days_back before.
+    Check that the values of metrics are within a certain tolerance.
+
+    Check that the values of metrics given as SQL expressions are within a certain tolerance of the ones
+    from days_back before.
 
     This method constructs a query like so ::
 
@@ -355,8 +358,9 @@ class BigQueryIntervalCheckOperator(IntervalCheckOperator):
 
 class BigQueryGetDataOperator(BaseOperator):
     """
-    Fetches the data from a BigQuery table (alternatively fetch data for selected columns)
-    and returns data in a python list. The number of elements in the returned list will
+    Fetch the data from a BigQuery table (alternatively fetch data for selected columns).
+
+    It returns data in a python list. The number of elements in the returned list will
     be equal to the number of rows fetched. Each element in the list will again be a list
     where element would represent the columns values for that row.
 
@@ -601,7 +605,7 @@ class BigQueryExecuteQueryOperator(BaseOperator):
 
     @property
     def operator_extra_links(self):
-        """Return operator extra links"""
+        """Return operator extra links."""
         if isinstance(self.sql, str):
             return (BigQueryConsoleLink(),)
         return (BigQueryConsoleIndexableLink(i) for i, _ in enumerate(self.sql))
@@ -743,8 +747,7 @@ class BigQueryExecuteQueryOperator(BaseOperator):
 
 class BigQueryCreateEmptyTableOperator(BaseOperator):
     """
-    Creates a new, empty table in the specified BigQuery dataset,
-    optionally with schema.
+    Creates a new, empty table in the specified BigQuery dataset, optionally with schema.
 
     The schema to be used for the BigQuery table may be specified in one of
     two ways. You may either directly pass the schema fields in, or you may
@@ -968,8 +971,7 @@ class BigQueryCreateEmptyTableOperator(BaseOperator):
 # pylint: disable=too-many-instance-attributes
 class BigQueryCreateExternalTableOperator(BaseOperator):
     """
-    Creates a new external table in the dataset with the data from Google Cloud
-    Storage.
+    Creates a new external table in the dataset with the data from Google Cloud Storage.
 
     The schema to be used for the BigQuery table may be specified in one of
     two ways. You may either directly pass the schema fields in, or you may
@@ -1752,7 +1754,7 @@ class BigQueryUpdateDatasetOperator(BaseOperator):
 
 class BigQueryDeleteTableOperator(BaseOperator):
     """
-    Deletes BigQuery tables
+    Deletes BigQuery tables.
 
     .. seealso::
         For more information on how to use this operator, take a look at the guide:
@@ -1837,7 +1839,7 @@ class BigQueryDeleteTableOperator(BaseOperator):
 
 class BigQueryUpsertTableOperator(BaseOperator):
     """
-    Upsert BigQuery table
+    Upsert BigQuery table.
 
     .. seealso::
         For more information on how to use this operator, take a look at the guide:

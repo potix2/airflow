@@ -29,7 +29,7 @@ from airflow.utils.decorators import apply_defaults
 # pylint: disable=too-many-instance-attributes
 class AzureBatchOperator(BaseOperator):
     """
-    Executes a job on Azure Batch Service
+    Executes a job on Azure Batch Service.
 
     :param batch_pool_id: A string that uniquely identifies the Pool within the Account.
     :type batch_pool_id: str
@@ -383,7 +383,7 @@ class AzureBatchOperator(BaseOperator):
 
     def clean_up(self, pool_id: Optional[str] = None, job_id: Optional[str] = None) -> None:
         """
-        Delete the given pool and job in the batch account
+        Delete the given pool and job in the batch account.
 
         :param pool_id: The id of the pool to delete
         :type pool_id: str

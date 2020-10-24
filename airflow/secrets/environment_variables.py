@@ -15,7 +15,7 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""Objects relating to sourcing connections from environment variables"""
+"""Objects relating to sourcing connections from environment variables."""
 
 import os
 from typing import Optional
@@ -36,7 +36,7 @@ class EnvironmentVariablesBackend(BaseSecretsBackend):
 
     def get_variable(self, key: str) -> Optional[str]:
         """
-        Get Airflow Variable from Environment Variable
+        Get Airflow Variable from Environment Variable.
 
         :param key: Variable Key
         :return: Variable Value

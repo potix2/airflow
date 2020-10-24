@@ -394,7 +394,7 @@ class AwsBaseHook(BaseHook):
         region_name: Optional[str] = None,
         config: Optional[Config] = None,
     ) -> boto3.client:
-        """Get the underlying boto3 client using boto3 session"""
+        """Get the underlying boto3 client using boto3 session."""
         session, endpoint_url = self._get_credentials(region_name)
 
         # No AWS Operators use the config argument to this method.
@@ -410,7 +410,7 @@ class AwsBaseHook(BaseHook):
         region_name: Optional[str] = None,
         config: Optional[Config] = None,
     ) -> boto3.resource:
-        """Get the underlying boto3 resource using boto3 session"""
+        """Get the underlying boto3 resource using boto3 session."""
         session, endpoint_url = self._get_credentials(region_name)
 
         # No AWS Operators use the config argument to this method.
@@ -423,7 +423,7 @@ class AwsBaseHook(BaseHook):
     @cached_property
     def conn(self) -> Union[boto3.client, boto3.resource]:
         """
-        Get the underlying boto3 client/resource (cached)
+        Get the underlying boto3 client/resource (cached).
 
         :return: boto3.client or boto3.resource
         :rtype: Union[boto3.client, boto3.resource]
@@ -438,7 +438,7 @@ class AwsBaseHook(BaseHook):
 
     def get_conn(self) -> Union[boto3.client, boto3.resource]:
         """
-        Get the underlying boto3 client/resource (cached)
+        Get the underlying boto3 client/resource (cached).
 
         Implemented so that caching works as intended. It exists for compatibility
         with subclasses that rely on a super().get_conn() method.
@@ -484,8 +484,9 @@ def _parse_s3_config(
     config_file_name: str, config_format: Optional[str] = "boto", profile: Optional[str] = None
 ) -> Tuple[Optional[str], Optional[str]]:
     """
-    Parses a config file for s3 credentials. Can currently
-    parse boto, s3cmd.conf and AWS SDK config formats
+    Parse a config file for s3 credentials.
+
+    Can currently parse boto, s3cmd.conf and AWS SDK config formats.
 
     :param config_file_name: path to the config file
     :type config_file_name: str

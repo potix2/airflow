@@ -15,7 +15,7 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""Base task runner"""
+"""Base task runner."""
 import getpass
 import os
 import subprocess
@@ -32,8 +32,7 @@ PYTHONPATH_VAR = 'PYTHONPATH'
 
 class BaseTaskRunner(LoggingMixin):
     """
-    Runs Airflow task instances by invoking the `airflow tasks run` command with raw
-    mode enabled in a subprocess.
+    Run task instances by invoking the `airflow tasks run` command with raw mode enabled in a subprocess.
 
     :param local_task_job: The local task job associated with running the
         associated task instance.
@@ -146,8 +145,8 @@ class BaseTaskRunner(LoggingMixin):
 
     def return_code(self):
         """
-        :return: The return code associated with running the task instance or
-            None if the task is not yet done.
+        The return code associated with running the task instance or None if the task is not yet done.
+
         :rtype: int
         """
         raise NotImplementedError()

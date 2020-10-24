@@ -31,7 +31,7 @@ T = TypeVar("T", bound=Callable)  # pylint: disable=invalid-name
 
 
 def action_logging(f: T) -> T:
-    """Decorator to log user actions"""
+    """Decorator to log user actions."""
 
     @functools.wraps(f)
     def wrapper(*args, **kwargs):
@@ -63,7 +63,7 @@ def action_logging(f: T) -> T:
 
 
 def gzipped(f: T) -> T:
-    """Decorator to make a view compressed"""
+    """Decorator to make a view compressed."""
 
     @functools.wraps(f)
     def view_func(*args, **kwargs):

@@ -16,7 +16,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""job_id indices
+"""job_id indices.
 
 Revision ID: 52d714495f0
 Revises: 338e90f54d61

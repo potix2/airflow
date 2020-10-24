@@ -27,8 +27,7 @@ from airflow.providers.ssh.hooks.ssh import SSHHook
 
 class SFTPHook(SSHHook):
     """
-    This hook is inherited from SSH hook. Please refer to SSH hook for the input
-    arguments.
+    This hook is inherited from SSH hook. Please refer to SSH hook for the input arguments.
 
     Interact with SFTP. Aims to be interchangeable with FTPHook.
 
@@ -96,7 +95,7 @@ class SFTPHook(SSHHook):
                     self.key_file = extra_options.get('private_key')
 
     def get_conn(self) -> pysftp.Connection:
-        """Returns an SFTP connection object"""
+        """Returns an SFTP connection object."""
         if self.conn is None:
             cnopts = pysftp.CnOpts()
             if self.no_host_key_check:
@@ -120,15 +119,16 @@ class SFTPHook(SSHHook):
         return self.conn
 
     def close_conn(self) -> None:
-        """Closes the connection"""
+        """Closes the connection."""
         if self.conn is not None:
             self.conn.close()
             self.conn = None
 
     def describe_directory(self, path: str) -> Dict[str, Dict[str, str]]:
         """
-        Returns a dictionary of {filename: {attributes}} for all files
-        on the remote system (where the MLSD command is supported).
+        Return a dictionary of {filename: {attributes}} for all files on the remote system.
+
+        It's returned if the MLSD command is supported.
 
         :param path: full path to the remote directory
         :type path: str
@@ -209,7 +209,7 @@ class SFTPHook(SSHHook):
 
     def delete_file(self, path: str) -> None:
         """
-        Removes a file on the FTP Server
+        Remove a file on the FTP Server.
 
         :param path: full path to the remote file
         :type path: str
@@ -230,7 +230,7 @@ class SFTPHook(SSHHook):
 
     def path_exists(self, path: str) -> bool:
         """
-        Returns True if a remote entity exists
+        Return True if a remote entity exists.
 
         :param path: full path to the remote file or directory
         :type path: str

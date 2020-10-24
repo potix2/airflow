@@ -17,7 +17,7 @@
 # under the License.
 
 
-"""This module contains the AWS DynamoDB hook"""
+"""This module contains the AWS DynamoDB hook."""
 from typing import Iterable, List, Optional
 
 from airflow.exceptions import AirflowException

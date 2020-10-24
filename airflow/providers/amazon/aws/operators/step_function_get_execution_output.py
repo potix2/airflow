@@ -25,7 +25,7 @@ from airflow.utils.decorators import apply_defaults
 
 class StepFunctionGetExecutionOutputOperator(BaseOperator):
     """
-    An Operator that begins execution of an Step Function State Machine
+    An Operator that begins execution of an Step Function State Machine.
 
     Additional arguments may be specified and are passed down to the underlying BaseOperator.
 

@@ -24,7 +24,7 @@ from airflow.utils.decorators import apply_defaults
 
 class MySqlOperator(BaseOperator):
     """
-    Executes sql code in a specific MySQL database
+    Execute sql code in a specific MySQL database.
 
     :param sql: the sql code to be executed. Can receive a str representing a
         sql statement, a list of str (sql statements), or reference to a template file.

@@ -15,7 +15,7 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""Objects relating to retrieving connections and variables from local file"""
+"""Objects relating to retrieving connections and variables from local file."""
 import json
 import logging
 import os
@@ -241,7 +241,7 @@ def load_variables(file_path: str) -> Dict[str, str]:
 
 
 def load_connections(file_path) -> Dict[str, List[Any]]:
-    """This function is deprecated. Please use `airflow.secrets.local_filesystem.load_connections_dict`.","""
+    """This function is deprecated. Please use `airflow.secrets.local_filesystem.load_connections_dict`."""
     warnings.warn(
         "This function is deprecated. Please use `airflow.secrets.local_filesystem.load_connections_dict`.",
         DeprecationWarning,
@@ -281,7 +281,7 @@ def load_connections_dict(file_path: str) -> Dict[str, Any]:
 
 class LocalFilesystemBackend(BaseSecretsBackend, LoggingMixin):
     """
-    Retrieves Connection objects and Variables from local files
+    Retrieves Connection objects and Variables from local files.
 
     Both ``JSON`` and ``.env`` files are supported.
 

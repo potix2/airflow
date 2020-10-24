@@ -14,7 +14,7 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""Config sub-commands"""
+"""Config sub-commands."""
 import getpass
 import locale
 import logging
@@ -40,13 +40,13 @@ class Anonymizer(Protocol):
     """Anonymizer protocol."""
 
     def process_path(self, value):
-        """Remove pii from paths"""
+        """Remove pii from paths."""
 
     def process_username(self, value):
-        """Remove pii from username"""
+        """Remove pii from username."""
 
     def process_url(self, value):
-        """Remove pii from URL"""
+        """Remove pii from URL."""
 
 
 class NullAnonymizer(Anonymizer):
@@ -123,7 +123,7 @@ class PiiAnonymizer(Anonymizer):
 
 
 class OperatingSystem:
-    """Operating system"""
+    """Operating system."""
 
     WINDOWS = "Windows"
     LINUX = "Linux"
@@ -132,7 +132,7 @@ class OperatingSystem:
 
     @staticmethod
     def get_current() -> Optional[str]:
-        """Get current operating system"""
+        """Get current operating system."""
         if os.name == "nt":
             return OperatingSystem.WINDOWS
         elif "linux" in sys.platform:
@@ -145,7 +145,7 @@ class OperatingSystem:
 
 
 class Architecture:
-    """Compute architecture"""
+    """Compute architecture."""
 
     X86_64 = "x86_64"
     X86 = "x86"
@@ -154,7 +154,7 @@ class Architecture:
 
     @staticmethod
     def get_current():
-        """Get architecture"""
+        """Get architecture."""
         return _MACHINE_TO_ARCHITECTURE.get(platform.machine().lower())
 
 
@@ -214,7 +214,7 @@ class AirflowInfo:
 
 
 class SystemInfo:
-    """Basic system and python information"""
+    """Basic system and python information."""
 
     def __init__(self, anonymizer: Anonymizer):
         self.operating_system = OperatingSystem.get_current()
@@ -247,7 +247,7 @@ class SystemInfo:
 
 
 class PathsInfo:
-    """Path information"""
+    """Path information."""
 
     def __init__(self, anonymizer: Anonymizer):
         system_path = os.environ.get("PATH", "").split(os.pathsep)
@@ -280,7 +280,7 @@ class PathsInfo:
 
 
 class ConfigInfo:
-    """Most critical config properties"""
+    """Most critical config properties."""
 
     def __init__(self, anonymizer: Anonymizer):
         self.executor = configuration.conf.get("core", "executor")
@@ -342,7 +342,7 @@ class ConfigInfo:
 
 
 class ToolsInfo:
-    """The versions of the tools that Airflow uses"""
+    """The versions of the tools that Airflow uses."""
 
     def __init__(self, anonymize: Anonymizer):
         del anonymize  # Nothing to anonymize here.
@@ -399,7 +399,7 @@ class ToolsInfo:
 
 
 class FileIoException(Exception):
-    """Raises when error happens in FileIo.io integration"""
+    """Raise when error happens in FileIo.io integration."""
 
 
 @tenacity.retry(
@@ -410,7 +410,7 @@ class FileIoException(Exception):
     after=tenacity.after_log(log, logging.DEBUG),
 )
 def _upload_text_to_fileio(content):
-    """Upload text file to File.io service and return lnk"""
+    """Upload text file to File.io service and return lnk."""
     resp = requests.post("https://file.io", files={"file": ("airflow-report.txt", content)})
     if not resp.ok:
         raise FileIoException("Failed to send report to file.io service.")

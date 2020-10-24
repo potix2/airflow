@@ -15,7 +15,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""drop_user_and_chart
+"""drop_user_and_chart.
 
 Revision ID: cf5dc11e79ad
 Revises: a66efa278eea

@@ -80,7 +80,7 @@ def downgrade_action(action):
 
 
 def convert_permissions(permissions, view_menus, convert_action, convert_dag_id):
-    """Creates new empty role in DB"""
+    """Create new empty role in DB."""
     appbuilder = cached_app().appbuilder  # pylint: disable=no-member
     roles = appbuilder.sm.get_all_roles()
     views_to_remove = set()

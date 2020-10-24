@@ -17,7 +17,9 @@
 # under the License.
 #
 """
-This module contains a Salesforce Hook which allows you to connect to your Salesforce instance,
+This module contains a Salesforce Hook.
+
+It allows you to connect to your Salesforce instance,
 retrieve data from it, and write that data to a file for other uses.
 
 .. note:: this hook also relies on the simple_salesforce package:
@@ -158,7 +160,7 @@ class SalesforceHook(BaseHook):
     @classmethod
     def _to_timestamp(cls, column: pd.Series) -> pd.Series:
         """
-        Convert a column of a dataframe to UNIX timestamps if applicable
+        Convert a column of a dataframe to UNIX timestamps if applicable.
 
         :param column: A Series object representing a column of a dataframe.
         :type column: pandas.Series

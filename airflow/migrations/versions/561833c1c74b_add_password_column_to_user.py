@@ -16,7 +16,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""add password column to user
+"""add password column to user.
 
 Revision ID: 561833c1c74b
 Revises: 40e67319e3a9

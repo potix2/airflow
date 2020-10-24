@@ -27,7 +27,7 @@ from airflow.utils.decorators import apply_defaults
 
 class LifeSciencesRunPipelineOperator(BaseOperator):
     """
-    Runs a Life Sciences Pipeline
+    Runs a Life Sciences Pipeline.
 
     .. seealso::
         For more information on how to use this operator, take a look at the guide:

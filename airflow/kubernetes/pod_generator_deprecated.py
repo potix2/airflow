@@ -15,10 +15,9 @@
 # specific language governing permissions and limitations
 # under the License.
 """
-This module provides an interface between the previous Pod
-API and outputs a kubernetes.client.models.V1Pod.
-The advantage being that the full Kubernetes API
-is supported and no serialization need be written.
+This module provides an interface between the previous Pod API and outputs a kubernetes.client.models.V1Pod.
+
+The advantage being that the full Kubernetes API is supported and no serialization need be written.
 """
 import copy
 import hashlib
@@ -34,7 +33,7 @@ MAX_LABEL_LEN = 63
 
 
 class PodDefaults:
-    """Static defaults for Pods"""
+    """Static defaults for Pods."""
 
     XCOM_MOUNT_PATH = '/airflow/xcom'
     SIDECAR_CONTAINER_NAME = 'airflow-xcom-sidecar'
@@ -56,6 +55,8 @@ class PodDefaults:
 
 def make_safe_label_value(string):
     """
+    Make valid label values.
+
     Valid label values must be 63 characters or less and must be empty or begin and
     end with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_),
     dots (.), and alphanumerics between.
@@ -75,7 +76,7 @@ def make_safe_label_value(string):
 
 class PodGenerator:
     """
-    Contains Kubernetes Airflow Worker configuration logic
+    Contain Kubernetes Airflow Worker configuration logic.
 
     Represents a kubernetes pod and manages execution of a single pod.
     Any configuration that is container specific gets applied to
@@ -236,7 +237,7 @@ class PodGenerator:
         self.extract_xcom = extract_xcom
 
     def gen_pod(self) -> k8s.V1Pod:
-        """Generates pod"""
+        """Generate pod."""
         result = None
 
         if result is None:
@@ -254,7 +255,7 @@ class PodGenerator:
 
     @staticmethod
     def add_sidecar(pod: k8s.V1Pod) -> k8s.V1Pod:
-        """Adds sidecar"""
+        """Add sidecar."""
         pod_cp = copy.deepcopy(pod)
         pod_cp.spec.volumes = pod.spec.volumes or []
         pod_cp.spec.volumes.insert(0, PodDefaults.VOLUME)
@@ -266,7 +267,7 @@ class PodGenerator:
 
     @staticmethod
     def from_obj(obj) -> Optional[k8s.V1Pod]:
-        """Converts to pod from obj"""
+        """Converts to pod from obj."""
         if obj is None:
             return None
 
@@ -310,8 +311,8 @@ class PodGenerator:
     @staticmethod
     def make_unique_pod_id(dag_id):
         r"""
-        Kubernetes pod names must be <= 253 chars and must pass the following regex for
-        validation
+        Kubernetes pod names must be <= 253 chars and must pass the following regex for validation.
+
         ``^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$``
 
         :param dag_id: a dag_id with only alphanumeric characters

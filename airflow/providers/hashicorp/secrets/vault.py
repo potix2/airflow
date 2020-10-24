@@ -15,7 +15,7 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""Objects relating to sourcing connections & variables from Hashicorp Vault"""
+"""Objects relating to sourcing connections & variables from Hashicorp Vault."""
 from typing import Optional
 
 from airflow.providers.hashicorp._internal_client.vault_client import _VaultClient  # noqa
@@ -181,7 +181,7 @@ class VaultBackend(BaseSecretsBackend, LoggingMixin):
 
     def get_conn_uri(self, conn_id: str) -> Optional[str]:
         """
-        Get secret value from Vault. Store the secret in the form of URI
+        Get secret value from Vault. Store the secret in the form of URI.
 
         :param conn_id: The connection id
         :type conn_id: str
@@ -197,7 +197,7 @@ class VaultBackend(BaseSecretsBackend, LoggingMixin):
 
     def get_variable(self, key: str) -> Optional[str]:
         """
-        Get Airflow Variable
+        Get Airflow Variable.
 
         :param key: Variable Key
         :type key: str
@@ -213,7 +213,7 @@ class VaultBackend(BaseSecretsBackend, LoggingMixin):
 
     def get_config(self, key: str) -> Optional[str]:
         """
-        Get Airflow Configuration
+        Get Airflow Configuration.
 
         :param key: Configuration Option Key
         :type key: str

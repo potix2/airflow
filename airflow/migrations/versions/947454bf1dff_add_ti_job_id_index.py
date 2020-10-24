@@ -16,7 +16,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""add ti job_id index
+"""add ti job_id index.
 
 Revision ID: 947454bf1dff
 Revises: bdaa763e6c56

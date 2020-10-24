@@ -16,7 +16,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""Add schedule interval to dag
+"""Add schedule interval to dag.
 
 Revision ID: dd4ecb8fbee3
 Revises: c8ffec048a3b

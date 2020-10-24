@@ -26,6 +26,8 @@ from airflow.utils.decorators import apply_defaults
 # pylint: disable=too-many-instance-attributes
 class SparkJDBCOperator(SparkSubmitOperator):
     """
+    Performs data transfers to/from JDBC-based databases with Apache Spark.
+
     This operator extends the SparkSubmitOperator specifically for performing data
     transfers to/from JDBC-based databases with Apache Spark. As with the
     SparkSubmitOperator, it assumes that the "spark-submit" binary is available on the
@@ -185,7 +187,7 @@ class SparkJDBCOperator(SparkSubmitOperator):
         self._hook: Optional[SparkJDBCHook] = None
 
     def execute(self, context: Dict[str, Any]) -> None:
-        """Call the SparkSubmitHook to run the provided spark job"""
+        """Call the SparkSubmitHook to run the provided spark job."""
         if self._hook is None:
             self._hook = self._get_hook()
         self._hook.submit_jdbc_job()

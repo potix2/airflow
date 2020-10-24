@@ -15,7 +15,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""Scheduler command"""
+"""Scheduler command."""
 import signal
 
 import daemon
@@ -29,7 +29,7 @@ from airflow.utils.cli import process_subdir, setup_locations, setup_logging, si
 
 @cli_utils.action_logging
 def scheduler(args):
-    """Starts Airflow Scheduler"""
+    """Starts Airflow Scheduler."""
     print(settings.HEADER)
     job = SchedulerJob(
         subdir=process_subdir(args.subdir),

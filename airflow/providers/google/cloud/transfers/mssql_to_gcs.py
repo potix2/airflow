@@ -26,8 +26,8 @@ from airflow.utils.decorators import apply_defaults
 
 
 class MSSQLToGCSOperator(BaseSQLToGCSOperator):
-    """Copy data from Microsoft SQL Server to Google Cloud Storage
-    in JSON or CSV format.
+    """
+    Copy data from Microsoft SQL Server to Google Cloud Storage in JSON or CSV format.
 
     :param mssql_conn_id: Reference to a specific MSSQL hook.
     :type mssql_conn_id: str
@@ -79,10 +79,7 @@ class MSSQLToGCSOperator(BaseSQLToGCSOperator):
 
     @classmethod
     def convert_type(cls, value, schema_type):
-        """
-        Takes a value from MSSQL, and converts it to a value that's safe for
-        JSON/Google Cloud Storage/BigQuery.
-        """
+        """Take a value from MSSQL, and convert it to a safe value for JSON/Google Cloud Storage/BigQuery."""
         if isinstance(value, decimal.Decimal):
             return float(value)
         return value

@@ -15,7 +15,7 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""Pools sub-commands"""
+"""Pools sub-commands."""
 import json
 import os
 from json import JSONDecodeError
@@ -31,14 +31,14 @@ def _tabulate_pools(pools, tablefmt="fancy_grid"):
 
 
 def pool_list(args):
-    """Displays info of all the pools"""
+    """Displays info of all the pools."""
     api_client = get_current_api_client()
     pools = api_client.get_pools()
     print(_tabulate_pools(pools=pools, tablefmt=args.output))
 
 
 def pool_get(args):
-    """Displays pool info by a given name"""
+    """Displays pool info by a given name."""
     api_client = get_current_api_client()
     pools = [api_client.get_pool(name=args.pool)]
     print(_tabulate_pools(pools=pools, tablefmt=args.output))
@@ -46,7 +46,7 @@ def pool_get(args):
 
 @cli_utils.action_logging
 def pool_set(args):
-    """Creates new pool with a given name and slots"""
+    """Creates new pool with a given name and slots."""
     api_client = get_current_api_client()
     pools = [api_client.create_pool(name=args.pool, slots=args.slots, description=args.description)]
     print(_tabulate_pools(pools=pools, tablefmt=args.output))
@@ -54,7 +54,7 @@ def pool_set(args):
 
 @cli_utils.action_logging
 def pool_delete(args):
-    """Deletes pool by a given name"""
+    """Deletes pool by a given name."""
     api_client = get_current_api_client()
     pools = [api_client.delete_pool(name=args.pool)]
     print(_tabulate_pools(pools=pools, tablefmt=args.output))
@@ -62,7 +62,7 @@ def pool_delete(args):
 
 @cli_utils.action_logging
 def pool_import(args):
-    """Imports pools from the file"""
+    """Imports pools from the file."""
     api_client = get_current_api_client()
     if os.path.exists(args.file):
         pools = pool_import_helper(args.file)
@@ -73,13 +73,13 @@ def pool_import(args):
 
 
 def pool_export(args):
-    """Exports all of the pools to the file"""
+    """Exports all of the pools to the file."""
     pools = pool_export_helper(args.file)
     print(_tabulate_pools(pools=pools, tablefmt=args.output))
 
 
 def pool_import_helper(filepath):
-    """Helps import pools from the json file"""
+    """Helps import pools from the json file."""
     api_client = get_current_api_client()
 
     with open(filepath) as poolfile:
@@ -108,7 +108,7 @@ def pool_import_helper(filepath):
 
 
 def pool_export_helper(filepath):
-    """Helps export all of the pools to the json file"""
+    """Helps export all of the pools to the json file."""
     api_client = get_current_api_client()
     pool_dict = {}
     pools = api_client.get_pools()

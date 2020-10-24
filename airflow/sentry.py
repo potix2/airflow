@@ -16,7 +16,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-"""Sentry Integration"""
+"""Sentry Integration."""
 import logging
 from functools import wraps
 
